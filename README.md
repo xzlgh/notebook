@@ -38,6 +38,7 @@
 
 ### - react-native
 - ### [环境](./react-native/环境.md)
+- ### [android兼容汇总](./react-native/android兼容汇总.md)
 
 ## 测试
 
