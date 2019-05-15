@@ -1,3 +1,5 @@
+# Linux系统操作
+
 ## 基础命令
 
 推荐链接： https://blog.csdn.net/hezemin0315/article/details/50666803
@@ -9,3 +11,15 @@
 
 3. kill pid \ kill -9 pid   杀掉进程\使用最高权限杀掉进程
 ```
+
+## 系统host
+
+### 修改\增加配置
+
+- sudo vim /etc/hosts
+
+### 修改docker配置
+
+- sudo vim /etc/docker/daemon.json
+
+### 
