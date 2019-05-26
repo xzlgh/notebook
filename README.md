@@ -19,6 +19,8 @@
 ## CSS
 - ##### [元素居中问题](./CSS/元素居中问题.md)
 
+- ##### [css的妙用](./CSS/css的妙用.md)
+
 ## JS
 
 - #### [面向对象编程铺垫知识](./JS/面向对象铺垫.md)
@@ -39,6 +41,7 @@
 ### - react-native
 - ### [环境](./react-native/环境.md)
 - ### [android兼容汇总](./react-native/android兼容汇总.md)
+- ### [修改apk的包名](./react-native/修改apk包名.md)
 
 ## 测试
 
