@@ -22,4 +22,11 @@
 
 - sudo vim /etc/docker/daemon.json
 
-### 
+### Ubuntu工作区切换快捷键失效
+
+> 解决方案：
+
+- sudo apt-get install dconf-tools
+- dconf reset -f /org/compiz/
+- setsid unity
+- 重启电脑，重新设置快捷键即可
