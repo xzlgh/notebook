@@ -22,6 +22,11 @@
 
 - sudo vim /etc/docker/daemon.json
 
+### 重启Docker配置
+
+- sudo systemctl daemon-reload
+- sudo systemctl restart docker
+
 ### Ubuntu工作区切换快捷键失效
 
 > 解决方案：
