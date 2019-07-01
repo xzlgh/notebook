@@ -23,6 +23,14 @@ html {
 }
 ```
 
+### 移动端禁止选中内容
+如果你不想用户可以选中页面中的内容，那么你可以在css中禁掉。
+```
+.user-select-none {
+  -webkit-user-select: none;
+｝
+```
+
 #### 如何禁止保存或拷贝图像（IOS）
 通常当你在手机或者pad上长按图像 img ，会弹出选项存储图像 或者拷贝图像，如果你不想让用户这么操作，那么你可以通过以下方法来禁止：
 img { -webkit-touch-callout: none; }
