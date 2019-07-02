@@ -58,6 +58,8 @@
 
 - #### [修改apk的包名](./react-native/修改apk包名.md)
 
+- #### [单元测试bug汇总](./react-native/单元测试/单元测试bug汇总.md)
+
 ### 测试
 
 ### 踩坑记
