@@ -61,3 +61,10 @@ Error: Activity class {xxx/xxx.MainActivity} does not exist.
 #### 报错原因：
 
 出现这个问题的原因是我们的package和applicationId不一致。如果你没有在你的 build.gradle 文件中定义 applicationId，这个applicationId 将默认为 AndroidManifest.xml 中所指定的与package相同的值。
+
+#### 解决办法：
+替换项目中所有使用到旧包名的地方都替换成新的包名，即可解决。
+
+
+
+
