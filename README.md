@@ -57,13 +57,13 @@
 
 ### - react-native
 
-- #### [环境](./react-native/环境.md)
-
 - #### [android兼容汇总](./react-native/android兼容汇总.md)
+
+- #### [RN环境搭建](./react-native/RN环境搭建.md)
 
 - #### [修改apk的包名](./react-native/修改apk包名.md)
 
-- #### [单元测试bug汇总](./react-native/单元测试/单元测试bug汇总.md)
+- #### [单元测试bug汇总](./react-native/单元测试bug汇总.md)
 
 ### 测试
 
