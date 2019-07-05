@@ -225,11 +225,10 @@
         - b> 检查硬件连接，以及使用adb devices来查看是否连接成功。
         - c> 飞行模式关闭
         - d> 在cmd中输入 adb reverse tcp:8081 tcp:8081, 如果报错,开启小手机,且重启一下devices,再执行这个命令
-        - 
         
         
     6> 小手机中程序能启动了,但是卡在进入页面,如下:
-    ![image](http://note.youdao.com/noteshare?id=cc0c37b23f4cba974a3d92bae93ca716)
+    ![image](./Images/环境/小手机loading白屏.png)
     
     - 按住 'Alt + m' 键,选择 'dev setting' -> 点击'Debug' -> 设置服务器主机和端口号: '8081'
     

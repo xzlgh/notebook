@@ -56,7 +56,7 @@ Starting: Intent { cmp=xxx/.MainActivity }
 Error type 3
 Error: Activity class {xxx/xxx.MainActivity} does not exist.
 ```
-![错误提示]("./Images/改包名bug_type-3.png")
+![错误提示](./Images/改包名bug_type-3.png)
 
 #### 报错原因：
 
