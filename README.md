@@ -67,6 +67,8 @@
 
 - #### [store的使用](./Vue/store的使用.md)
 
+- #### [问题记录](./Vue/问题记录.md)
+
 ### - react
 
 - #### [react-router路由变化，但是页面不会刷新重新加载](./react/react-route路由变页面不变问题记录.md)
@@ -89,7 +91,7 @@
 
 - #### [一个console引发的血案](./react-native/一个console引发的血案.md)
 
-### 测试
+- #### [enzyme测试RN的页面过不了语法检查](./react-native/enzyme测试RN的页面过不了语法检查.md)
 
 ### 网络通信
 
