@@ -6,16 +6,6 @@
 
 ## 具体内容
 
-### Tools一些工具
-
-- #### [npm 的基本使用方法](./Tools/npm的基本使用方法.md)
-
-- #### [git 使用简介](./Tools/git使用简介.md)
-
-- #### [Linux系统基本操作命令](./Tools/Linux系统基本操作命令.md)
-
-- #### [nginx](./Tools/nginx.md)
-
 ### Html
 
 - #### [meta之美](./Html/meta之美.md)
@@ -97,9 +87,27 @@
 
 - #### [前端跨域与解决方案](./网络通信/前端跨域与解决方案.md)
 
+### Linux
+
+- #### [Linux系统基本操作命令](./Linux/Linux系统基本操作命令.md)
+
+- #### [Linux基础开发环境搭建以及安装](./Linux/Linux基础开发环境搭建以及安装.md)
+
 ### mysql
 
 - #### [出错汇总](./mysql/出错汇总.md)
+
+- #### [数据库备份](./mysql/数据库备份.md)
+
+### Tools一些工具
+
+- #### [npm 的基本使用方法](./Tools/npm/npm的基本使用方法.md)
+
+- #### [git 使用简介](./Tools/git/git使用简介.md)
+
+- #### [nginx](./Tools/niginx/nginx.md)
+
+- #### [gcc版本升级](./Tools/gcc/gcc版本升级.md)
 
 ### 踩坑记
 
