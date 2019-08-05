@@ -86,7 +86,15 @@
  - 修改完成后,保存退出: wq
  - 打开android studio,选择 Config -> SDK Manager -> HTTP Proxy -> 选择第一项:No Proxy
  - 之后就可以在Android SDK中选择自己需要的SDK版本加载,加载完成后,既可以自己创建一个项目试一下.
-
+ - 如果希望在使用过程中，不打开Android Studio 的IDE就直接启动AVD,可以配置环境变量，主要配置SDK中的emulator的路径，
+  我的emulator可执行文件的路径在*/SDK/tools 目录下，配置文件为~/.bash_profile,配置信息如下：
+  ```config
+  export ANDROID_HOME=$HOME/Android/Sdk
+  export PATH=$PATH:$ANDROID_HOME/tools
+  export PATH=$PATH:$ANDROID_HOME/tools/bin
+  export PATH=$PATH:$ANDROID_HOME/platform-tools
+  export PATH=$PATH:$ANDROID_HOME/emulator
+ ```
 -6. 安装Watchman
 
  - git clone https://github.com/facebook/watchman.git
