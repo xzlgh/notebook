@@ -93,7 +93,7 @@
   export PATH=$PATH:$ANDROID_HOME/tools
   export PATH=$PATH:$ANDROID_HOME/tools/bin
   export PATH=$PATH:$ANDROID_HOME/platform-tools
-  export PATH=$PATH:$ANDROID_HOME/tools/emulator
+  export PATH=$ANDROID_HOME/emulator:$PATH
  ```
 -6. 安装Watchman
 
