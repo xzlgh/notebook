@@ -2,9 +2,9 @@
 
 ## Android修改Apk包名
 
-### 需要修改的位置：
+### 需要修改的位置
 
-```
+```md
 主要修改的位置：
 > java文件：
 - android/app/src/main/java/com/PROJECT_NAME/MainActivity.java
@@ -33,7 +33,7 @@ defaultConfig {
 
 ```
 
-### 实际操作步骤：
+### 实际操作步骤
 
 - 在vscode中先修改android/app/build.gradle
 - 在修改android/app/src/main/AndroidManifest.xml
@@ -50,19 +50,21 @@ defaultConfig {
 
 #### 具体报错信息如下
 
-```
+```c++
 Starting the app (/home/xxx/soft/sdk//platform-tools/adb shell am start -n xxx/.MainActivity)…
 Starting: Intent { cmp=xxx/.MainActivity }
 Error type 3
 Error: Activity class {xxx/xxx.MainActivity} does not exist.
 ```
+
 ![错误提示](./Images/改包名bug_type-3.png)
 
-#### 报错原因：
+#### 报错原因
 
 出现这个问题的原因是我们的package和applicationId不一致。如果你没有在你的 build.gradle 文件中定义 applicationId，这个applicationId 将默认为 AndroidManifest.xml 中所指定的与package相同的值。
 
-#### 解决办法：
+#### 解决办法
+
 替换项目中所有使用到旧包名的地方都替换成新的包名，即可解决。
 
 

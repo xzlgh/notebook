@@ -5,8 +5,9 @@
 ### linux环境
 
 #### 安装所需的运行环境
-```
-1. node环境   
+
+```md
+1. node环境
 - 版本要求：8.3版本以上，高于8.3
 2. Python2
 - 版本要求，必须为2.x（不支持3.x）
@@ -328,6 +329,3 @@ react-native bundle --platform android --dev false --entry-file index.js  --bund
 - 重启rn,红米手机成功安装App
 - 问题解决
 ```
-
-
-

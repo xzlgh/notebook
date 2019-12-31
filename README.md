@@ -51,6 +51,7 @@
 ### 框架
 
 ### - Vue
+
 - #### [Vue环境搭建]('./Vue/Vue环境搭建.md')
 
 - #### [Vue2.0小技巧汇总](./Vue/Vue2.0使用小技巧汇总.md)
@@ -62,6 +63,7 @@
 ### - react
 
 - #### [react环境以及框架选用](./react/react环境.md)
+
 - #### [react-router路由变化，但是页面不会刷新重新加载](./react/react-route路由变页面不变问题记录.md)
 
 - #### [单元测试](./react/单元测试.md)
@@ -82,7 +84,9 @@
 
 - #### [一个console引发的血案](./react-native/一个console引发的血案.md)
 
-- #### [enzyme测试RN的页面过不了语法检查](./react-native/enzyme测试RN的页面过不了语法检查.md)
+- #### [Bug汇总](./react-native/Bug汇总.md)
+
+- #### [RN编写小技巧汇总](./react-native/RN编写小技巧汇总.md)
 
 ### 网络通信
 
@@ -123,5 +127,3 @@
 - #### [优质文章推荐](./其他/优质文章推荐.md)
 
 - #### [经验技巧汇总](./其他/经验技巧.md)
-
-

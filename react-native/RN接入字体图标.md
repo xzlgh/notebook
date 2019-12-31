@@ -12,7 +12,7 @@
 
 - 打开android -> app -> build.gradle文件,查看里面的buildscript对象
 
-```
+```Android
 buildscript {
     ext {
         <!-- 看buildToolsVersion的版本号,此版本号要与node_modules里面的一致 -->
@@ -42,7 +42,8 @@ buildscript {
 - 去阿里巴巴矢量图标库可以下载字体图标,将下载的文件夹里面的.ttf文件拷贝到Android -> app -> src -> main -> assets -> fonts文件夹下面
 
 - 在src下面创建一个Icon文件夹,设置自定义图标,且创建两个文件
-```
+
+```js
 >  index.js文件
 
 import FontAwesome from 'react-native-vector-icons/FontAwesome'
@@ -101,27 +102,23 @@ export {OIcon}
 
 - 使用自定义的字体图标
 
-```
+```ts
 > 在组件中引入刚刚创建的Icon组件,直接使用
 
 import {Icon} from '../../Icon'
 
 
 export default demo extends Component {
-    render() {
-        return (
-            // name是自定义图标名称, size图标大小, color图标颜色
-            <Icon name={'icon|home'} size={200} color={"pink"}/>
-        )
-    }
+  render() {
+    return (
+      // name是自定义图标名称, size图标大小, color图标颜色
+      <Icon name={'icon|home'} size={200} color={"pink"}/>
+    )
+  }
 }
 
 ```
 
 - 重启项目,至此,引入自定义的字体图标已经完成
 
---- 
-
-
-
-
+---
