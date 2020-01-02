@@ -12,6 +12,8 @@
 
 - #### [form表单存在的坑](./Html/form表单存在的坑.md)
 
+- #### [form表单使用技巧汇总](./Html/form表单使用技巧汇总.md)
+
 ### jQuery
 
 - #### [form表单基础](./jQuery/form表单基础.md)
