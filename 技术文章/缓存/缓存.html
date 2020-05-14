@@ -1,0 +1,638 @@
+<!DOCTYPE html><html><head>
+      <title>&#x7F13;&#x5B58;</title>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      
+      <link rel="stylesheet" href="file:///c:\Users\xzl\.vscode\extensions\shd101wyy.markdown-preview-enhanced-0.5.2\node_modules\@shd101wyy\mume\dependencies\katex\katex.min.css">
+
+      <style>
+      /**
+ * prism.js Github theme based on GitHub's theme.
+ * @author Sam Clarke
+ */
+code[class*="language-"],
+pre[class*="language-"] {
+  color: #333;
+  background: none;
+  font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  word-wrap: normal;
+  line-height: 1.4;
+
+  -moz-tab-size: 8;
+  -o-tab-size: 8;
+  tab-size: 8;
+
+  -webkit-hyphens: none;
+  -moz-hyphens: none;
+  -ms-hyphens: none;
+  hyphens: none;
+}
+
+/* Code blocks */
+pre[class*="language-"] {
+  padding: .8em;
+  overflow: auto;
+  /* border: 1px solid #ddd; */
+  border-radius: 3px;
+  /* background: #fff; */
+  background: #f5f5f5;
+}
+
+/* Inline code */
+:not(pre) > code[class*="language-"] {
+  padding: .1em;
+  border-radius: .3em;
+  white-space: normal;
+  background: #f5f5f5;
+}
+
+.token.comment,
+.token.blockquote {
+  color: #969896;
+}
+
+.token.cdata {
+  color: #183691;
+}
+
+.token.doctype,
+.token.punctuation,
+.token.variable,
+.token.macro.property {
+  color: #333;
+}
+
+.token.operator,
+.token.important,
+.token.keyword,
+.token.rule,
+.token.builtin {
+  color: #a71d5d;
+}
+
+.token.string,
+.token.url,
+.token.regex,
+.token.attr-value {
+  color: #183691;
+}
+
+.token.property,
+.token.number,
+.token.boolean,
+.token.entity,
+.token.atrule,
+.token.constant,
+.token.symbol,
+.token.command,
+.token.code {
+  color: #0086b3;
+}
+
+.token.tag,
+.token.selector,
+.token.prolog {
+  color: #63a35c;
+}
+
+.token.function,
+.token.namespace,
+.token.pseudo-element,
+.token.class,
+.token.class-name,
+.token.pseudo-class,
+.token.id,
+.token.url-reference .token.variable,
+.token.attr-name {
+  color: #795da3;
+}
+
+.token.entity {
+  cursor: help;
+}
+
+.token.title,
+.token.title .token.punctuation {
+  font-weight: bold;
+  color: #1d3e81;
+}
+
+.token.list {
+  color: #ed6a43;
+}
+
+.token.inserted {
+  background-color: #eaffea;
+  color: #55a532;
+}
+
+.token.deleted {
+  background-color: #ffecec;
+  color: #bd2c00;
+}
+
+.token.bold {
+  font-weight: bold;
+}
+
+.token.italic {
+  font-style: italic;
+}
+
+
+/* JSON */
+.language-json .token.property {
+  color: #183691;
+}
+
+.language-markup .token.tag .token.punctuation {
+  color: #333;
+}
+
+/* CSS */
+code.language-css,
+.language-css .token.function {
+  color: #0086b3;
+}
+
+/* YAML */
+.language-yaml .token.atrule {
+  color: #63a35c;
+}
+
+code.language-yaml {
+  color: #183691;
+}
+
+/* Ruby */
+.language-ruby .token.function {
+  color: #333;
+}
+
+/* Markdown */
+.language-markdown .token.url {
+  color: #795da3;
+}
+
+/* Makefile */
+.language-makefile .token.symbol {
+  color: #795da3;
+}
+
+.language-makefile .token.variable {
+  color: #183691;
+}
+
+.language-makefile .token.builtin {
+  color: #0086b3;
+}
+
+/* Bash */
+.language-bash .token.keyword {
+  color: #0086b3;
+}
+
+/* highlight */
+pre[data-line] {
+  position: relative;
+  padding: 1em 0 1em 3em;
+}
+pre[data-line] .line-highlight-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: transparent;
+  display: block;
+  width: 100%;
+}
+
+pre[data-line] .line-highlight {
+  position: absolute;
+  left: 0;
+  right: 0;
+  padding: inherit 0;
+  margin-top: 1em;
+  background: hsla(24, 20%, 50%,.08);
+  background: linear-gradient(to right, hsla(24, 20%, 50%,.1) 70%, hsla(24, 20%, 50%,0));
+  pointer-events: none;
+  line-height: inherit;
+  white-space: pre;
+}
+
+pre[data-line] .line-highlight:before, 
+pre[data-line] .line-highlight[data-end]:after {
+  content: attr(data-start);
+  position: absolute;
+  top: .4em;
+  left: .6em;
+  min-width: 1em;
+  padding: 0 .5em;
+  background-color: hsla(24, 20%, 50%,.4);
+  color: hsl(24, 20%, 95%);
+  font: bold 65%/1.5 sans-serif;
+  text-align: center;
+  vertical-align: .3em;
+  border-radius: 999px;
+  text-shadow: none;
+  box-shadow: 0 1px white;
+}
+
+pre[data-line] .line-highlight[data-end]:after {
+  content: attr(data-end);
+  top: auto;
+  bottom: .4em;
+}html body{font-family:"Helvetica Neue",Helvetica,"Segoe UI",Arial,freesans,sans-serif;font-size:16px;line-height:1.6;color:#333;background-color:#fff;overflow:initial;box-sizing:border-box;word-wrap:break-word}html body>:first-child{margin-top:0}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{line-height:1.2;margin-top:1em;margin-bottom:16px;color:#000}html body h1{font-size:2.25em;font-weight:300;padding-bottom:.3em}html body h2{font-size:1.75em;font-weight:400;padding-bottom:.3em}html body h3{font-size:1.5em;font-weight:500}html body h4{font-size:1.25em;font-weight:600}html body h5{font-size:1.1em;font-weight:600}html body h6{font-size:1em;font-weight:600}html body h1,html body h2,html body h3,html body h4,html body h5{font-weight:600}html body h5{font-size:1em}html body h6{color:#5c5c5c}html body strong{color:#000}html body del{color:#5c5c5c}html body a:not([href]){color:inherit;text-decoration:none}html body a{color:#08c;text-decoration:none}html body a:hover{color:#00a3f5;text-decoration:none}html body img{max-width:100%}html body>p{margin-top:0;margin-bottom:16px;word-wrap:break-word}html body>ul,html body>ol{margin-bottom:16px}html body ul,html body ol{padding-left:2em}html body ul.no-list,html body ol.no-list{padding:0;list-style-type:none}html body ul ul,html body ul ol,html body ol ol,html body ol ul{margin-top:0;margin-bottom:0}html body li{margin-bottom:0}html body li.task-list-item{list-style:none}html body li>p{margin-top:0;margin-bottom:0}html body .task-list-item-checkbox{margin:0 .2em .25em -1.8em;vertical-align:middle}html body .task-list-item-checkbox:hover{cursor:pointer}html body blockquote{margin:16px 0;font-size:inherit;padding:0 15px;color:#5c5c5c;border-left:4px solid #d6d6d6}html body blockquote>:first-child{margin-top:0}html body blockquote>:last-child{margin-bottom:0}html body hr{height:4px;margin:32px 0;background-color:#d6d6d6;border:0 none}html body table{margin:10px 0 15px 0;border-collapse:collapse;border-spacing:0;display:block;width:100%;overflow:auto;word-break:normal;word-break:keep-all}html body table th{font-weight:bold;color:#000}html body table td,html body table th{border:1px solid #d6d6d6;padding:6px 13px}html body dl{padding:0}html body dl dt{padding:0;margin-top:16px;font-size:1em;font-style:italic;font-weight:bold}html body dl dd{padding:0 16px;margin-bottom:16px}html body code{font-family:Menlo,Monaco,Consolas,'Courier New',monospace;font-size:.85em !important;color:#000;background-color:#f0f0f0;border-radius:3px;padding:.2em 0}html body code::before,html body code::after{letter-spacing:-0.2em;content:"\00a0"}html body pre>code{padding:0;margin:0;font-size:.85em !important;word-break:normal;white-space:pre;background:transparent;border:0}html body .highlight{margin-bottom:16px}html body .highlight pre,html body pre{padding:1em;overflow:auto;font-size:.85em !important;line-height:1.45;border:#d6d6d6;border-radius:3px}html body .highlight pre{margin-bottom:0;word-break:normal}html body pre code,html body pre tt{display:inline;max-width:initial;padding:0;margin:0;overflow:initial;line-height:inherit;word-wrap:normal;background-color:transparent;border:0}html body pre code:before,html body pre tt:before,html body pre code:after,html body pre tt:after{content:normal}html body p,html body blockquote,html body ul,html body ol,html body dl,html body pre{margin-top:0;margin-bottom:16px}html body kbd{color:#000;border:1px solid #d6d6d6;border-bottom:2px solid #c7c7c7;padding:2px 4px;background-color:#f0f0f0;border-radius:3px}@media print{html body{background-color:#fff}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{color:#000;page-break-after:avoid}html body blockquote{color:#5c5c5c}html body pre{page-break-inside:avoid}html body table{display:table}html body img{display:block;max-width:100%;max-height:100%}html body pre,html body code{word-wrap:break-word;white-space:pre}}.markdown-preview{width:100%;height:100%;box-sizing:border-box}.markdown-preview .pagebreak,.markdown-preview .newpage{page-break-before:always}.markdown-preview pre.line-numbers{position:relative;padding-left:3.8em;counter-reset:linenumber}.markdown-preview pre.line-numbers>code{position:relative}.markdown-preview pre.line-numbers .line-numbers-rows{position:absolute;pointer-events:none;top:1em;font-size:100%;left:0;width:3em;letter-spacing:-1px;border-right:1px solid #999;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.markdown-preview pre.line-numbers .line-numbers-rows>span{pointer-events:none;display:block;counter-increment:linenumber}.markdown-preview pre.line-numbers .line-numbers-rows>span:before{content:counter(linenumber);color:#999;display:block;padding-right:.8em;text-align:right}.markdown-preview .mathjax-exps .MathJax_Display{text-align:center !important}.markdown-preview:not([for="preview"]) .code-chunk .btn-group{display:none}.markdown-preview:not([for="preview"]) .code-chunk .status{display:none}.markdown-preview:not([for="preview"]) .code-chunk .output-div{margin-bottom:16px}.scrollbar-style::-webkit-scrollbar{width:8px}.scrollbar-style::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}.scrollbar-style::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,0.66);border:4px solid rgba(150,150,150,0.66);background-clip:content-box}html body[for="html-export"]:not([data-presentation-mode]){position:relative;width:100%;height:100%;top:0;left:0;margin:0;padding:0;overflow:auto}html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{position:relative;top:0}@media screen and (min-width:914px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{padding:2em calc(50% - 457px + 2em)}}@media screen and (max-width:914px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{font-size:14px !important;padding:1em}}@media print{html body[for="html-export"]:not([data-presentation-mode]) #sidebar-toc-btn{display:none}}html body[for="html-export"]:not([data-presentation-mode]) #sidebar-toc-btn{position:fixed;bottom:8px;left:8px;font-size:28px;cursor:pointer;color:inherit;z-index:99;width:32px;text-align:center;opacity:.4}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] #sidebar-toc-btn{opacity:1}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc{position:fixed;top:0;left:0;width:300px;height:100%;padding:32px 0 48px 0;font-size:14px;box-shadow:0 0 4px rgba(150,150,150,0.33);box-sizing:border-box;overflow:auto;background-color:inherit}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar{width:8px}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,0.66);border:4px solid rgba(150,150,150,0.66);background-clip:content-box}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc a{text-decoration:none}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc ul{padding:0 1.6em;margin-top:.8em}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc li{margin-bottom:.8em}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc ul{list-style-type:none}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{left:300px;width:calc(100% -  300px);padding:2em calc(50% - 457px -  150px);margin:0;box-sizing:border-box}@media screen and (max-width:1274px){html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{width:100%}}html body[for="html-export"]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .markdown-preview{left:50%;transform:translateX(-50%)}html body[for="html-export"]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .md-sidebar-toc{display:none}
+/* Please visit the URL below for more information: */
+/*   https://shd101wyy.github.io/markdown-preview-enhanced/#/customize-css */
+
+      </style>
+    </head>
+    <body for="html-export">
+      <div class="mume markdown-preview  ">
+      <h1 class="mume-header" id="%E7%BC%93%E5%AD%98%E5%AD%A6%E4%B9%A0">&#x7F13;&#x5B58;&#x5B66;&#x4E60;</h1>
+
+<p><em>&#x53C2;&#x8003;&#x94FE;&#x63A5;&#xFF1A; <a href="https://zhuanlan.zhihu.com/p/44789005">https://zhuanlan.zhihu.com/p/44789005</a></em></p>
+<h2 class="mume-header" id="%E5%89%8D%E8%A8%80">&#x524D;&#x8A00;</h2>
+
+<p>&#x9762;&#x8BD5;&#x8FC7;&#x7A0B;&#x4E2D;&#x603B;&#x4F1A;&#x51FA;&#x73B0;&#x8C08;&#x8C08;http&#x7F13;&#x5B58;&#x673A;&#x5236;&#xFF0C;&#x8C08;&#x8C08;&#x4F60;&#x5BF9;&#x6D4F;&#x89C8;&#x5668;&#x7F13;&#x5B58;&#x7684;&#x7406;&#x89E3;&#x7B49;&#x7B49;&#x95EE;&#x9898;&#x3002;&#x4ECA;&#x5929;&#x6211;&#x5C06;&#x9488;&#x5BF9;&#x7F13;&#x5B58;&#x95EE;&#x9898;&#x8C08;&#x8C08;&#x6211;&#x7406;&#x89E3;&#x7684;&#x7F13;&#x5B58;&#x4E16;&#x754C;&#x4EE5;&#x53CA;&#x7F13;&#x5B58;&#x673A;&#x5236;&#x3002;</p>
+<p>&#x8C08;&#x5230;&#x7F13;&#x5B58;&#xFF0C;&#x9996;&#x5148;&#x7406;&#x89E3;&#x5176;&#x5B9A;&#x4E49; &#x2014;&#x2014; &#x9AD8;&#x901F;&#x6570;&#x636E;&#x4EA4;&#x6362;&#x7684;&#x5B58;&#x50A8;&#x5668;&#x3002;&#x4ECE;&#x4E2D;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x6293;&#x4F4F;&#x51E0;&#x4E2A;&#x5173;&#x952E;&#x8BCD;&#xFF1A;&#x9AD8;&#x901F;&#x3001;&#x6570;&#x636E;&#x3001;&#x5B58;&#x50A8;&#x5668;&#x3002;&#x4ECE;&#x5B9A;&#x4E49;&#x4E2D;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x660E;&#x767D;&#x4E24;&#x4E2A;&#x95EE;&#x9898;</p>
+<pre data-role="codeBlock" data-info="md" class="language-gfm"><code>1. &#x6570;&#x636E;&#x83B7;&#x53D6;&#x65B9;&#x5F0F;&#x6709;&#x54EA;&#x4E9B;&#xFF1F;
+2. &#x5404;&#x6570;&#x636E;&#x83B7;&#x53D6;&#x901F;&#x5EA6;&#x987A;&#x5E8F;&#x662F;&#x600E;&#x4E48;&#x6837;&#x7684;&#xFF1F;
+</code></pre><ol>
+<li>&#x6570;&#x636E;&#x83B7;&#x53D6;&#x65B9;&#x5F0F;&#x6709;&#x54EA;&#x4E9B;&#xFF1F;</li>
+</ol>
+<pre data-role="codeBlock" data-info="md" class="language-gfm"><code>&#x7F51;&#x7EDC;&#x8BF7;&#x6C42;&#x3001;&#x786C;&#x76D8;&#x3001;&#x56FA;&#x6001;&#x786C;&#x76D8;&#x3001;&#x5185;&#x5B58;&#x3001;&#x9AD8;&#x901F;&#x7F13;&#x51B2;&#x5B58;&#x50A8;&#x5668;&#x7B49;&#x7B49;
+</code></pre><p>CPU&#x8BFB;&#x53D6;&#x6570;&#x901F;&#x5EA6;&#xFF1A;&#x9AD8;&#x901F;&#x7F13;&#x51B2;&#x5B58;&#x50A8;&#x5668; -&gt; &#x5185;&#x5B58; -&gt; &#x56FA;&#x6001;&#x786C;&#x76D8; -&gt; &#x786C;&#x76D8; -&gt; &#x7F51;&#x7EDC;&#x8BF7;&#x6C42;</p>
+<p><em>&#x6570;&#x636E;&#x5E93;&#x7684;&#x6570;&#x636E;&#x4E5F;&#x53EF;&#x4EE5;&#x770B;&#x6210;&#x662F;&#x672C;&#x5730;&#x78C1;&#x76D8;&#x4E0A;&#x9762;&#x5B58;&#x50A8;&#x7684;&#x6587;&#x4EF6;&#x6570;&#x636E;&#xFF0C;&#x53EA;&#x4E0D;&#x8FC7;&#x6587;&#x4EF6;&#x683C;&#x5F0F;&#x4E0D;&#x662F;&#x666E;&#x901A;&#x7684;&#x6587;&#x4EF6;&#xFF0C;&#x8BFB;&#x53D6;&#x901F;&#x5EA6;&#x629B;&#x5F00;&#x5176;&#x4ED6;&#xFF0C;&#x5355;&#x8BBA;&#x8BFB;&#x53D6;&#x901F;&#x5EA6;&#xFF0C;&#x78C1;&#x76D8;&#x6587;&#x4EF6;&#x7684;&#x8BFB;&#x53D6;&#x901F;&#x5EA6;&#x6BD4;&#x6570;&#x636E;&#x5E93;&#x7684;&#x8981;&#x66F4;&#x52A0;&#x5FEB;&#x3002;&#x53EA;&#x4E0D;&#x8FC7;&#x6570;&#x636E;&#x5E93;&#x53EF;&#x4EE5;&#x5BF9;&#x6570;&#x636E;&#x8FDB;&#x884C;&#x7BA1;&#x7406;</em></p>
+<h3 class="mume-header" id="%E6%A6%82%E5%BF%B5">&#x6982;&#x5FF5;</h3>
+
+<p>&#x7EFC;&#x4E0A;&#x6240;&#x8FF0;&#xFF0C;&#x6211;&#x4EEC;&#x6240;&#x8BF4;&#x7684;&#x9AD8;&#x901F;&#x7F13;&#x51B2;&#x5B58;&#x50A8;&#x5668;&#xFF0C;&#x5C31;&#x662F;&#x6211;&#x4EEC;&#x7269;&#x7406;&#x610F;&#x4E49;&#x4E0A;&#x7684;&#x7F13;&#x5B58;&#x3002;&#x7136;&#x800C;&#x9664;&#x4E86;&#x6211;&#x4EEC;&#x7269;&#x7406;&#x610F;&#x4E49;&#x4E0A;&#x9762;&#x7684;&#x7F13;&#x5B58;&#xFF0C;&#x6211;&#x4EEC;&#x8FD8;&#x6709;&#x5F88;&#x591A;&#x5176;&#x4ED6;&#x6982;&#x5FF5;&#x610F;&#x4E49;&#x7684;&#x7F13;&#x5B58;&#xFF0C;&#x8FD9;&#x79CD;&#x7F13;&#x5B58;&#x4E0D;&#x662F;&#x771F;&#x5B9E;&#x7684;&#x7269;&#x7406;&#x5B58;&#x50A8;&#x5668;&#xFF0C;&#x800C;&#x662F;&#x6211;&#x4EEC;&#x4E3A;&#x4E86;&#x8FBE;&#x5230;&#x6570;&#x636E;&#x4EA4;&#x4E92;&#x63D0;&#x901F;&#x7684;&#x76EE;&#x7684;&#xFF0C;&#x51FA;&#x73B0;&#x7684;&#x4EA7;&#x7269;&#x3002;&#x8FD9;&#x91CC;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x91CD;&#x70B9;&#x5173;&#x6CE8;&#x7684;&#x5C31;&#x662F;<code>&#x7F51;&#x7EDC;&#x8BF7;&#x6C42;</code>&#x3002;</p>
+<h3 class="mume-header" id="%E7%BD%91%E7%BB%9C%E8%AF%B7%E6%B1%82">&#x7F51;&#x7EDC;&#x8BF7;&#x6C42;</h3>
+
+<p>&#x7F51;&#x7EDC;&#x8BF7;&#x6C42;&#x4E09;&#x4E2A;&#x57FA;&#x672C;&#x7684;&#x9636;&#x6BB5;&#xFF1A;&#x8BF7;&#x6C42;&#xFF0C;&#x5904;&#x7406;&#xFF0C;&#x54CD;&#x5E94;</p>
+<p>&#x8FD9;&#x4E09;&#x4E2A;&#x9636;&#x6BB5;&#x4E2D;&#xFF0C;&#x5904;&#x7406;&#x5C5E;&#x4E8E;&#x540E;&#x7AEF;&#x7F13;&#x5B58;&#xFF1B;&#x800C;&#x8BF7;&#x6C42;&#x548C;&#x54CD;&#x5E94;&#x5219;&#x5C5E;&#x4E8E;&#x524D;&#x7AEF;&#x7F13;&#x5B58;&#x3002;</p>
+<h3 class="mume-header" id="%E7%BC%93%E5%AD%98%E5%88%86%E7%B1%BB">&#x7F13;&#x5B58;&#x5206;&#x7C7B;</h3>
+
+<h4 class="mume-header" id="%E5%88%86%E7%B1%BB-%E5%89%8D%E7%AB%AF%E7%BC%93%E5%AD%98-%E5%90%8E%E7%AB%AF%E7%BC%93%E5%AD%98">&#x5206;&#x7C7B;&#xFF1A; &#x524D;&#x7AEF;&#x7F13;&#x5B58;&#x3001;&#x540E;&#x7AEF;&#x7F13;&#x5B58;</h4>
+
+<h5 class="mume-header" id="%E5%89%8D%E7%AB%AF%E7%BC%93%E5%AD%98">&#x524D;&#x7AEF;&#x7F13;&#x5B58;</h5>
+
+<p>&#x524D;&#x7AEF;&#x7F13;&#x5B58;&#x4E3B;&#x8981;&#x5173;&#x6CE8;&#x7684;&#x8FD8;&#x662F;&#x6D4F;&#x89C8;&#x5668;&#x7F13;&#x5B58;&#xFF0C;App&#x7684;&#x7F13;&#x5B58;&#x8FD9;&#x91CC;&#x6682;&#x4E0D;&#x505A;&#x4ECB;&#x7ECD;&#x3002;<br>
+&#x6D4F;&#x89C8;&#x5668;&#x7F13;&#x5B58;&#x5206;&#x7C7B;&#x6709;&#x591A;&#x79CD;</p>
+<p>&#x6309;&#x7167;&#x5B58;&#x50A8;&#x4F4D;&#x7F6E;&#x6765;&#x5206;&#xFF1A;memory cache, disk cache, Service Worker<br>
+&#x6309;&#x7167;&#x5931;&#x6548;&#x7B56;&#x7565;&#x6765;&#x5206;&#xFF1A;Cache-Control,Etag</p>
+<h5 class="mume-header" id="%E6%8C%89%E7%85%A7%E5%AD%98%E5%82%A8%E4%BD%8D%E7%BD%AE%E7%9A%84%E5%88%86%E7%B1%BB">&#x6309;&#x7167;&#x5B58;&#x50A8;&#x4F4D;&#x7F6E;&#x7684;&#x5206;&#x7C7B;&#xFF1A;</h5>
+
+<h6 class="mume-header" id="memory-cache%E7%BC%93%E5%AD%98">memory cache&#x7F13;&#x5B58;</h6>
+
+<p>memory cache &#x662F;&#x6D4F;&#x89C8;&#x5668;&#x4E3A;&#x4E86;&#x52A0;&#x5FEB;&#x8BFB;&#x53D6;&#x7F13;&#x5B58;&#x901F;&#x5EA6;&#x800C;&#x8FDB;&#x884C;&#x7684;&#x81EA;&#x8EAB;&#x7684;&#x4F18;&#x5316;&#x884C;&#x4E3A;&#xFF0C;&#x4E0D;&#x53D7;&#x5F00;&#x53D1;&#x8005;&#x63A7;&#x5236;&#xFF0C;&#x4E5F;&#x4E0D;&#x53D7;http&#x534F;&#x8BAE;&#x5934;&#x7684;&#x7EA6;&#x675F;&#xFF0C;&#x7B97;&#x662F;&#x4E00;&#x4E2A;&#x9ED1;&#x6CB3;&#x3002;</p>
+<p>memory cache&#x7F13;&#x5B58;&#x662F;&#x5185;&#x5B58;&#x4E2D;&#x7684;&#x7F13;&#x5B58;&#xFF0C;&#x51E0;&#x4E4E;&#x6240;&#x6709;&#x7684;&#x7F51;&#x7EDC;&#x8BF7;&#x6C42;&#x8D44;&#x6E90;&#x90FD;&#x4F1A;&#x88AB;&#x6D4F;&#x89C8;&#x5668;&#x81EA;&#x52A8;&#x52A0;&#x5165;&#x5230;memory cache&#x4E2D;&#xFF0C;memory cache&#x53EA;&#x80FD;&#x662F;&quot;&#x77ED;&#x671F;&#x5B58;&#x50A8;&quot;&#x3002;&#x901A;&#x5E38;&#xFF0C;&#x6D4F;&#x89C8;&#x5668;&#x5173;&#x95ED;&#x6807;&#x7B7E;&#x9875;&#x540E;&#xFF0C;memory cache&#x5C31;&#x4F1A;&#x5931;&#x6548;&#x3002;&#x6781;&#x7AEF;&#x60C5;&#x51B5;&#x4E0B;&#xFF08;&#x4F8B;&#x5982;&#x4E00;&#x4E2A;&#x9875;&#x9762;&#x7684;&#x6DF7;&#x6751;&#x5360;&#x7528;&#x4E86;&#x8D85;&#x7EA7;&#x591A;&#x7684;&#x5185;&#x5B58;&#xFF09;&#xFF0C;&#x90A3;&#x53EF;&#x80FD;&#x4F1A;&#x5728;&#x6807;&#x7B7E;&#x6CA1;&#x5173;&#x95ED;&#x524D;&#xFF0C;&#x524D;&#x9762;&#x7684;&#x7F13;&#x5B58;&#x5C31;&#x5DF2;&#x7ECF;&#x5931;&#x6548;&#x3002;</p>
+<p>&#x6D4F;&#x89C8;&#x5668;&#x4ECE;memory cache&#x83B7;&#x53D6;&#x7F13;&#x5B58;&#x5185;&#x5BB9;&#x65F6;&#xFF0C;&#x6D4F;&#x89C8;&#x5668;&#x4F1A;&#x5FFD;&#x89C6;max-age=0,no-cache&#x7B49;&#x5934;&#x90E8;&#x914D;&#x7F6E;&#xFF08;no-store&#x9664;&#x5916;&#xFF09;&#x3002;</p>
+<h6 class="mume-header" id="disk-cache">disk cache</h6>
+
+<p>&#x8FD9;&#x79CD;&#x7F13;&#x5B58;&#x4E5F;&#x53EB;&#x505A;http cache,&#x8FD9;&#x662F;&#x4E00;&#x79CD;&#x5B58;&#x50A8;&#x5728;&#x786C;&#x76D8;&#x4E0A;&#x7684;&#x7F13;&#x5B58;&#xFF0C;&#x5B83;&#x662F;&#x6301;&#x4E45;&#x5B58;&#x50A8;&#x7684;&#xFF0C;&#x5B9E;&#x9645;&#x5B58;&#x5728;&#x4E8E;&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;&#x4E2D;&#x3002;&#x5B83;&#x5141;&#x8BB8;&#x5171;&#x4EAB;&#x7F13;&#x5B58;&#xFF08;&#x76F8;&#x540C;&#x7684;&#x8D44;&#x6E90;&#x5728;&#x8DE8;&#x4F1A;&#x8BDD;&#xFF0C;&#x751A;&#x81F3;&#x662F;&#x8DE8;&#x7AD9;&#x70B9;&#x7684;&#x60C5;&#x51B5;&#x4E0B;&#x4F7F;&#x7528;&#xFF09;&#x3002;</p>
+<p>disk cache&#x7684;&#x4F7F;&#x7528;&#xFF0C;&#x6839;&#x636E;http&#x5934;&#x4FE1;&#x606F;&#x53EF;&#x4EE5;&#x77E5;&#x9053;&#x662F;&#x5426;&#x53EF;&#x7F13;&#x5B58;&#xFF0C;&#x662F;&#x5426;&#x9700;&#x8981;&#x91CD;&#x65B0;&#x8BF7;&#x6C42;&#x3002;disk cache&#x65E2;&#x7136;&#x662F;&#x4E00;&#x79CD;&#x6301;&#x4E45;&#x5B58;&#x50A8;&#xFF0C;&#x90A3;&#x4E48;&#x9762;&#x4E34;&#x5BB9;&#x91CF;&#x589E;&#x957F;&#x7684;&#x95EE;&#x9898;&#x65F6;&#xFF0C;&#x6D4F;&#x89C8;&#x5668;&#x6709;&#x81EA;&#x5DF1;&#x7684;&#x5E95;&#x5C42;&#x7B97;&#x6CD5;&#x628A;&#x201C;&#x6700;&#x8001;&#x7684;&#x201D;&#x7684;&#xFF0C;&#x6216;&#x8005;&#x201C;&#x6700;&#x53EF;&#x80FD;&#x8FC7;&#x65F6;&#x7684;&#x201D;&#x8D44;&#x6E90;&#x5220;&#x9664;&#xFF0C;&#x5B83;&#x662F;&#x4E00;&#x4E2A;&#x4E00;&#x4E2A;&#x5220;&#x9664;&#x7684;&#x8FC7;&#x7A0B;&#x3002;&#x6BCF;&#x4E2A;&#x6D4F;&#x89C8;&#x5668;&#x7684;&#x5220;&#x9664;&#x7B97;&#x6CD5;&#x4E0D;&#x5C3D;&#x76F8;&#x540C;&#xFF0C;&#x53EF;&#x80FD;&#x5B58;&#x5728;&#x5DEE;&#x5F02;&#x6027;&#x3002;</p>
+<h6 class="mume-header" id="service-worker">Service Worker</h6>
+
+<p>Service Worker&#x662F;&#x7531;&#x5F00;&#x53D1;&#x8005;&#x7F16;&#x5199;&#x7684;&#x989D;&#x5916;&#x7684;&#x811A;&#x672C;&#xFF0C;&#x4E14;&#x7F13;&#x5B58;&#x4F4D;&#x7F6E;&#x72EC;&#x7ACB;&#xFF0C;&#x51FA;&#x73B0;&#x4E5F;&#x8F83;&#x665A;&#xFF0C;&#x4F7F;&#x7528;&#x8FD8;&#x4E0D;&#x7B97;&#x592A;&#x5E7F;&#x6CDB;&#x3002;</p>
+<p>&#x524D;&#x9762;&#x4E24;&#x79CD;&#x7F13;&#x5B58;&#x7684;&#x7F13;&#x5B58;&#x7B56;&#x7565;&#xFF0C;&#x5305;&#x62EC;&#x7F13;&#x5B58;/&#x8BFB;&#x53D6;/&#x5931;&#x6548;&#x90FD;&#x662F;&#x7531;&#x6D4F;&#x89C8;&#x5668;&#x5185;&#x90E8;&#x5224;&#x65AD;&amp;&#x8FDB;&#x884C;&#x7684;&#xFF0C;&#x6211;&#x4EEC;&#x53EA;&#x80FD;&#x8BBE;&#x7F6E;&#x54CD;&#x5E94;&#x5934;&#x7684;&#x67D0;&#x4E9B;&#x5B57;&#x6BB5;&#x544A;&#x8BC9;&#x6D4F;&#x89C8;&#x5668;&#xFF0C;&#x800C;&#x4E0D;&#x80FD;&#x81EA;&#x5DF1;&#x64CD;&#x4F5C;&#x3002;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;Application-&gt;Cache Storage&#x4E2D;&#x627E;&#x5230;&#x8FD9;&#x4E2A;&#x201C;&#x5B58;&#x50A8;&#x5668;&#x201D;&#xFF0C;&#x8FD9;&#x4E2A;&#x7F13;&#x5B58;&#x662F;&#x6C38;&#x4E45;&#x6027;&#x7684;&#xFF0C;&#x5373;&#x4F7F;&#x5173;&#x95ED;&#x4E86;&#x6D4F;&#x89C8;&#x5668;&#x6807;&#x7B7E;&#xFF0C;&#x4E0B;&#x6B21;&#x6253;&#x5F00;&#x7F13;&#x5B58;&#x4F9D;&#x7136;&#x8FD8;&#x5B58;&#x5728;&#x3002;&#x6709;&#x4E24;&#x79CD;&#x60C5;&#x51B5;&#x4F1A;&#x5BFC;&#x81F4;&#x8FD9;&#x4E2A;&#x7F13;&#x5B58;&#x4E2D;&#x7684;&#x8D44;&#x6E90;&#x88AB;&#x6E05;&#x9664;</p>
+<ul>
+<li>&#x624B;&#x52A8;&#x8C03;&#x7528;API: cache.delete(resource)</li>
+<li>&#x6216;&#x8005;&#x5BB9;&#x91CF;&#x8D85;&#x8FC7;&#x9650;&#x5236;&#xFF0C;&#x88AB;&#x6D4F;&#x89C8;&#x5668;&#x5168;&#x90E8;&#x6E05;&#x7A7A;</li>
+</ul>
+<p>&#x5F53;Service Worker&#x6CA1;&#x80FD;&#x547D;&#x4E2D;&#x7F13;&#x5B58;&#xFF0C;&#x4E00;&#x822C;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x4F1A;&#x4F7F;&#x7528;fetch()&#x65B9;&#x6CD5;&#x7EE7;&#x7EED;&#x83B7;&#x53D6;&#x8D44;&#x6E90;&#x3002;&#x7ECF;&#x8FC7;Service Worker&#x7684;fetch&#x65B9;&#x6CD5;&#x83B7;&#x53D6;&#x7684;&#x8D44;&#x6E90;&#xFF0C;&#x5373;&#x4FBF;&#x5B83;&#x5E76;&#x6CA1;&#x6709;&#x547D;&#x4E2D;Service Worker&#x7F13;&#x5B58;&#xFF0C;&#x751A;&#x81F3;&#x5B9E;&#x9645;&#x8D70;&#x4E86;&#x7F51;&#x7EDC;&#x8BF7;&#x6C42;&#xFF0C;&#x4E5F;&#x4F1A;&#x6807;&#x6CE8;&#x4E3A;from ServiceWorker.</p>
+<blockquote>
+<p>&#x7EFC;&#x4E0A;&#x5185;&#x5BB9;&#xFF0C;&#x8D44;&#x6E90;&#x6DFB;&#x52A0;&#x5230;&#x7F13;&#x5B58;&#x7684;&#x8FC7;&#x7A0B;&#x5982;&#x4E0B;</p>
+</blockquote>
+<ul>
+<li>&#x6839;&#x636E;Service Worker&#x4E2D;&#x7684;handler&#x51B3;&#x5B9A;&#x662F;&#x5426;&#x5B58;&#x5165;Cache Storage(&#x989D;&#x5916;&#x7684;&#x5B58;&#x50A8;&#x4F4D;&#x7F6E;)</li>
+<li>&#x6839;&#x636E;http&#x5934;&#x90E8;&#x76F8;&#x5173;&#x5B57;&#x6BB5;&#xFF08;Cache-control,pragma&#x7B49;&#xFF09;&#x51B3;&#x5B9A;&#x662F;&#x5426;&#x5B58;&#x5165;disk cache</li>
+<li>memory cache&#x4FDD;&#x5B58;&#x4E00;&#x4EFD;&#x8D44;&#x6E90;&#x7684;&#x5F15;&#x7528;&#xFF0C;&#x4EE5;&#x5907;&#x4E0B;&#x6B21;&#x4F7F;&#x7528;</li>
+</ul>
+<blockquote>
+<p>&#x8BFB;&#x53D6;&#x7F13;&#x5B58;&#x7684;&#x8FC7;&#x7A0B;&#x5219;&#x5982;&#x4E0B;&#xFF1A;</p>
+</blockquote>
+<ul>
+<li>&#x5148;&#x8BFB;&#x53D6;memory cache&#x4E2D;&#x7F13;&#x5B58;&#x7684;&#x8D44;&#x6E90;</li>
+<li>&#x5982;&#x679C;memory cache&#x4E2D;&#x627E;&#x4E0D;&#x5230;&#xFF0C;&#x5219;&#x67E5;&#x770B;disk cache&#x7F13;&#x5B58;&#x7684;&#x8D44;&#x6E90;</li>
+<li>&#x6700;&#x540E;&#x67E5;&#x627E;Service Worker&#x4E2D;&#x7F13;&#x5B58;&#x7684;&#x8D44;&#x6E90;</li>
+<li>&#x5982;&#x679C;Service Worker&#x4E2D;&#x4E5F;&#x627E;&#x4E0D;&#x5230;&#xFF0C;&#x90A3;&#x4E48;&#x6D4F;&#x89C8;&#x5668;&#x5C31;&#x4F1A;&#x7528;Service Worker&#x4E2D;&#x7684;fetch&#x65B9;&#x6CD5;&#x53D1;&#x8D77;&#x8BF7;&#x6C42;&#x3002;</li>
+</ul>
+<h5 class="mume-header" id="%E6%8C%89%E7%85%A7%E5%A4%B1%E6%95%88%E7%AD%96%E7%95%A5%E7%9A%84%E5%88%86%E7%B1%BB">&#x6309;&#x7167;&#x5931;&#x6548;&#x7B56;&#x7565;&#x7684;&#x5206;&#x7C7B;&#xFF1A;</h5>
+
+<p>&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x5206;&#x4E3A;&#x5F3A;&#x7F13;&#x5B58;&#x548C;&#x534F;&#x5546;&#x7F13;&#x5B58;&#xFF0C;&#x8FD9;&#x4E24;&#x4E2A;&#x7F13;&#x5B58;&#x65B9;&#x5F0F;&#x5176;&#x5B9E;&#x90FD;&#x53EF;&#x4EE5;&#x5F52;&#x7C7B;&#x5230;disk cache&#x4E2D;&#xFF0C;disk cache&#x4E5F;&#x662F;&#x5E73;&#x65F6;&#x6211;&#x4EEC;&#x6700;&#x4E3A;&#x719F;&#x6089;&#x7684;&#x6240;&#x8C13;http cache(&#x56E0;&#x4E3A;&#x4E0D;&#x60F3;memory cache,&#x5B83;&#x9075;&#x5B88;http&#x534F;&#x8BAE;&#x5934;&#x4E2D;&#x7684;&#x5B57;&#x6BB5;)&#x3002;&#x5E73;&#x65F6;&#x6240;&#x8BF4;&#x7684;&#x5F3A;&#x5236;&#x7F13;&#x5B58;&#xFF0C;&#x5BF9;&#x6BD4;&#x7F13;&#x5B58;&#x548C;Cache-Control&#x7B49;&#xFF0C;&#x4E5F;&#x5F52;&#x7C7B;&#x4E3A;&#x8FD9;&#x4E00;&#x7C7B;&#x3002;</p>
+<h6 class="mume-header" id="%E5%BC%BA%E5%88%B6%E7%BC%93%E5%AD%98%E5%BC%BA%E7%BC%93%E5%AD%98">&#x5F3A;&#x5236;&#x7F13;&#x5B58;(&#x5F3A;&#x7F13;&#x5B58;)</h6>
+
+<p>&#x5F3A;&#x7F13;&#x5B58;&#x662F;&#x5F53;&#x5BA2;&#x6237;&#x7AEF;&#x8BF7;&#x6C42;&#x540E;&#xFF0C;&#x4F1A;&#x5148;&#x8BBF;&#x95EE;&#x7F13;&#x5B58;&#x6570;&#x636E;&#xFF0C;&#x770B;&#x7F13;&#x5B58;&#x662F;&#x5426;&#x5B58;&#x5728;&#xFF0C;&#x5982;&#x679C;&#x5B58;&#x5728;&#x5219;&#x76F4;&#x63A5;&#x53D6;&#x7F13;&#x5B58;&#x6570;&#x636E;&#xFF1B;&#x5982;&#x679C;&#x4E0D;&#x5B58;&#x5728;&#x5219;&#x8BF7;&#x6C42;&#x771F;&#x7684;&#x670D;&#x52A1;&#x5668;&#xFF0C;&#x54CD;&#x5E94;&#x540E;&#x518D;&#x5199;&#x5165;&#x7F13;&#x5B58;&#x6570;&#x636E;&#x5E93;&#x3002;</p>
+<p>&#x5F3A;&#x7F13;&#x5B58;&#x76F4;&#x63A5;&#x51CF;&#x5C11;&#x8BF7;&#x6C42;&#x6B21;&#x6570;&#xFF0C;&#x662F;&#x63D0;&#x5347;&#x6700;&#x5927;&#x7684;&#x7F13;&#x5B58;&#x7B56;&#x7565;&#x3002;&#x5B83;&#x5305;&#x62EC;&#x4E86;&#x63D0;&#x5230;&#x8FC7;&#x7684;&#x6570;&#x636E;&#x8BF7;&#x6C42;&#x7684;&#x5168;&#x90E8;&#x4E09;&#x4E2A;&#x6B65;&#x9AA4;&#xFF0C;&#x5982;&#x679C;&#x8003;&#x8651;&#x4F7F;&#x7528;&#x7F13;&#x5B58;&#x6765;&#x4F18;&#x5316;&#x7F51;&#x9875;&#x6027;&#x80FD;&#x7684;&#x8BDD;&#xFF0C;&#x5F3A;&#x7F13;&#x5B58;&#x5E94;&#x8BE5;&#x9996;&#x5148;&#x88AB;&#x8003;&#x8651;&#x3002;</p>
+<p>&#x53EF;&#x4EE5;&#x5B9E;&#x73B0;&#x5F3A;&#x5236;&#x7F13;&#x5B58;&#x7684;&#x5B57;&#x6BB5;&#x662F;Cache-Control(http1.1)&#x548C;expires(http1.0)</p>
+<blockquote>
+<p>Expires</p>
+</blockquote>
+<p>&#x8868;&#x793A;&#x7F13;&#x5B58;&#x5230;&#x671F;&#x65F6;&#x95F4;&#xFF0C;&#x662F;&#x4E00;&#x4E2A;&#x7EDD;&#x5BF9;&#x7684;&#x65F6;&#x95F4;&#xFF08;&#x5F53;&#x524D;&#x65F6;&#x95F4;+&#x7F13;&#x5B58;&#x65F6;&#x95F4;&#xFF09;&#xFF0C;&#x4F8B;&#x5982;&#xFF1A;</p>
+<pre data-role="codeBlock" data-info class="language-"><code>Expires: Thu, 10 Dec 2020 16:54:43 GMT
+</code></pre><p>&#x8FD9;&#x4E2A;&#x54CD;&#x5E94;&#x5934;&#x544A;&#x8BC9;&#x6D4F;&#x89C8;&#x5668;&#xFF0C;&#x5728;&#x672A;&#x8FC7;&#x671F;&#x4E4B;&#x524D;&#x4E0D;&#x9700;&#x8981;&#x518D;&#x6B21;&#x53BB;&#x8BF7;&#x6C42;&#x3002;<br>
+&#x5F0A;&#x7AEF;&#xFF1A;</p>
+<ol>
+<li>&#x5199;&#x6CD5;&#x590D;&#x6742;&#x3002;&#x5BB9;&#x6613;&#x4EBA;&#x4E3A;&#x6027;&#x7684;&#x51FA;&#x9519;</li>
+<li>&#x65F6;&#x95F4;&#x8BA1;&#x91CF;&#x65B9;&#x5F0F;&#x53EF;&#x80FD;&#x51FA;&#x73B0;&#x4E0D;&#x7EDF;&#x4E00;&#x7684;&#x60C5;&#x51B5;&#xFF0C;&#x670D;&#x52A1;&#x5668;&#x7ED9;&#x7684;&#x65F6;&#x95F4;&#x53EF;&#x80FD;&#x548C;&#x672C;&#x5730;&#xFF08;&#x81EA;&#x5DF1;&#x7684;&#x7535;&#x8111;&#x8BBE;&#x7F6E;&#xFF09;&#x65F6;&#x95F4;&#x4E0D;&#x4E00;&#x81F4;&#x3002;</li>
+</ol>
+<blockquote>
+<p>Cache-Control</p>
+</blockquote>
+<p>&#x8BE5;&#x5B57;&#x6BB5;&#x53EF;&#x4EE5;&#x8868;&#x793A;&#x8D44;&#x6E90;&#x7F13;&#x5B58;&#x7684;&#x6700;&#x5927;&#x6709;&#x6548;&#x65F6;&#x95F4;&#xFF08;&#x76F8;&#x5BF9;&#x65F6;&#x95F4;&#x2014;&#x2014;&#x65F6;&#x95F4;&#x95F4;&#x9694;&#xFF09;&#xFF0C;&#x4F8B;&#x5982;&#xFF1A;</p>
+<pre data-role="codeBlock" data-info class="language-"><code>Cache-Control: public, max-age=20000
+</code></pre><p>&#x8FD9;&#x4E2A;&#x5B57;&#x6BB5;&#x6709;&#x51E0;&#x4E2A;&#x5E38;&#x7528;&#x7684;&#x503C;&#xFF1A;</p>
+<pre data-role="codeBlock" data-info="md" class="language-gfm"><code>&#x5BA2;&#x6237;&#x7AEF;&#xFF08;&#x8BF7;&#x6C42;req&#xFF09;:
+Cache-Control: max-age=&lt;seconds&gt; &#x7F13;&#x5B58;&#x5B58;&#x50A8;&#x7684;&#x6700;&#x5927;&#x5468;&#x671F;&#xFF0C;&#x8D85;&#x8FC7;&#x8FD9;&#x4E2A;&#x65F6;&#x95F4;&#x7F13;&#x5B58;&#x88AB;&#x8BA4;&#x4E3A;&#x8FC7;&#x671F;&#xFF08;&#x5355;&#x4F4D;&#x79D2;&#xFF09;
+Cache-Control: no-cache &#x5728;&#x53D1;&#x5E03;&#x7F13;&#x5B58;&#x526F;&#x672C;&#x4E4B;&#x524D;&#xFF0C;&#x5F3A;&#x5236;&#x8981;&#x6C42;&#x7F13;&#x5B58;&#x628A;&#x8BF7;&#x6C42;&#x63D0;&#x4EA4;&#x7ED9;&#x539F;&#x59CB;&#x670D;&#x52A1;&#x5668;&#x8FDB;&#x884C;&#x9A8C;&#x8BC1;&#xFF08;&#x534F;&#x5546;&#x7F13;&#x5B58;&#x9A8C;&#x8BC1;&#xFF09;
+Cache-Control: no-store &#x8868;&#x793A;&#x65E0;&#x8BBA;&#x4EC0;&#x4E48;&#x60C5;&#x51B5;&#xFF0C;&#x90FD;&#x4E0D;&#x4F1A;&#x8FDB;&#x884C;&#x7F13;&#x5B58;&#xFF0C;&#x5373;&#x4F7F;max-age&#x6709;&#x503C;&#x4E14;&#x672A;&#x8FC7;&#x671F;&#xFF0C;&#x4E5F;&#x4E0D;&#x4F1A;&#x7F13;&#x5B58;&#x4EFB;&#x4F55;&#x5185;&#x5BB9;
+
+&#x670D;&#x52A1;&#x5668;&#xFF08;&#x54CD;&#x5E94;res&#xFF09;&#xFF1A;
+
+Cache-Control: no-cache &#x5728;&#x53D1;&#x5E03;&#x7F13;&#x5B58;&#x526F;&#x672C;&#x4E4B;&#x524D;&#xFF0C;&#x5F3A;&#x5236;&#x8981;&#x6C42;&#x7F13;&#x5B58;&#x628A;&#x8BF7;&#x6C42;&#x63D0;&#x4EA4;&#x7ED9;&#x539F;&#x59CB;&#x670D;&#x52A1;&#x5668;&#x8FDB;&#x884C;&#x9A8C;&#x8BC1;&#xFF08;&#x534F;&#x5546;&#x7F13;&#x5B58;&#x9A8C;&#x8BC1;&#xFF09;&#xFF0C;Pragma&#x5B57;&#x6BB5;&#x662F;&#x8BE5;&#x5C5E;&#x6027;&#x503C;&#x7684;&#x517C;&#x5BB9;&#x89E3;&#x51B3;&#x65B9;&#x6848;&#xFF0C;&#x5728;http1.1&#x4E4B;&#x524D;&#x4F7F;&#x7528;&#xFF0C;&#x9700;&#x8981;&#x8BBE;&#x7F6E;Pragma: no-cache
+Cache-Control: no-store &#x8868;&#x793A;&#x65E0;&#x8BBA;&#x4EC0;&#x4E48;&#x60C5;&#x51B5;&#xFF0C;&#x90FD;&#x4E0D;&#x4F1A;&#x8FDB;&#x884C;&#x7F13;&#x5B58;&#xFF0C;&#x5373;&#x4F7F;max-age&#x6709;&#x503C;&#x4E14;&#x672A;&#x8FC7;&#x671F;&#xFF0C;&#x4E5F;&#x4E0D;&#x4F1A;&#x7F13;&#x5B58;&#x4EFB;&#x4F55;&#x5185;&#x5BB9;
+Cache-Control: publick &#x8868;&#x793A;&#x7F13;&#x5B58;&#x53EF;&#x4EE5;&#x88AB;&#x4EFB;&#x4F55;&#x5BF9;&#x8C61;&#xFF08;&#x53D1;&#x9001;&#x8BF7;&#x6C42;&#x7684;&#x5BA2;&#x6237;&#x7AEF;&#xFF0C;&#x4EE3;&#x7406;&#x670D;&#x52A1;&#x5668;&#x7B49;&#xFF09;&#x7F13;&#x5B58;&#xFF0C;&#x5373;&#x4F7F;&#x901A;&#x5E38;&#x4E0D;&#x53EF;&#x7F13;&#x5B58;&#x7684;&#x5185;&#x5BB9;&#xFF08;1.&#x8BE5;&#x76F8;&#x5E94;&#x6CA1;&#x6709;max-age&#x6307;&#x4EE4;&#x6216;&#x8005;expires&#x6D88;&#x606F;&#x5934;&#xFF1B;2.&#x54CD;&#x5E94;&#x5BF9;&#x5E94;&#x7684;&#x8BF7;&#x6C42;&#x65B9;&#x6CD5;&#x662F;post&#xFF09;
+Cache-Control: private &#x8868;&#x793A;&#x7F13;&#x5B58;&#x53EA;&#x80FD;&#x88AB;&#x5355;&#x4E2A;&#x5BA2;&#x6237;&#x7AEF;&#x7F13;&#x5B58;&#xFF0C;&#x4E0D;&#x80FD;&#x4F5C;&#x4E3A;&#x5171;&#x4EAB;&#x7F13;&#x5B58;&#xFF08;&#x5373;&#x4EE3;&#x7406;&#x670D;&#x52A1;&#x5668;&#x4E0D;&#x80FD;&#x7F13;&#x5B58;&#x5B83;&#xFF09;&#x3002;&#x5BF9;&#x5E94;&#x7528;&#x6237;&#x7684;&#x672C;&#x5730;&#x6D4F;&#x89C8;&#x5668;&#x3002;
+Cache-Control: must-revalidate &#x4E00;&#x65E6;&#x8D44;&#x6E90;&#x8FC7;&#x671F;&#xFF08;&#x6BD4;&#x5982;max-age&#x5DF2;&#x7ECF;&#x8D85;&#x65F6;&#xFF09;&#xFF0C;&#x5728;&#x6210;&#x529F;&#x5411;&#x539F;&#x59CB;&#x670D;&#x52A1;&#x5668;&#x9A8C;&#x8BC1;&#x4E4B;&#x524D;&#xFF0C;&#x7F13;&#x5B58;&#x4E0D;&#x80FD;&#x7528;&#x8BE5;&#x8D44;&#x6E90;&#x54CD;&#x5E94;&#x540E;&#x7EED;&#x8BF7;&#x6C42;&#x3002;
+</code></pre><p><em>&#x603B;&#x7ED3;&#xFF1A;Cache-Control&#x7684;&#x4F18;&#x5148;&#x7EA7;&#x8981;&#x9AD8;&#x4E8E;Expires,&#x4E3A;&#x4E86;&#x517C;&#x5BB9;&#x5B9E;&#x9645;&#x9879;&#x76EE;&#x4E2D;&#x4E24;&#x4E2A;&#x5B57;&#x6BB5;&#x6211;&#x4EEC;&#x90FD;&#x4F1A;&#x8BBE;&#x7F6E;&#xFF1B;&#x6B64;&#x5916;Cache-Control&#x7684;&#x5C5E;&#x6027;&#x503C;&#x4F18;&#x5148;&#x7EA7;&#xFF1A;no-store &gt; no-cache &gt; publick(private) &gt; max-age</em></p>
+<h6 class="mume-header" id="%E5%8D%8F%E5%95%86%E7%BC%93%E5%AD%98">&#x534F;&#x5546;&#x7F13;&#x5B58;</h6>
+
+<p>&#x5F53;&#x5F3A;&#x5236;&#x7F13;&#x5B58;&#x5931;&#x6548;&#xFF08;&#x8D85;&#x8FC7;&#x89C4;&#x5B9A;&#x65F6;&#x95F4;&#xFF09;&#x65F6;&#xFF0C;&#x5C31;&#x9700;&#x8981;&#x4F7F;&#x7528;&#x5BF9;&#x6BD4;&#x7F13;&#x5B58;&#xFF08;&#x534F;&#x5546;&#x7F13;&#x5B58;&#xFF09;&#xFF0C;&#x7531;&#x670D;&#x52A1;&#x5668;&#x51B3;&#x5B9A;&#x7F13;&#x5B58;&#x5185;&#x5BB9;&#x662F;&#x5426;&#x5931;&#x6548;</p>
+<p>&#x6D4F;&#x89C8;&#x5668;&#x5148;&#x8BF7;&#x6C42;&#x7F13;&#x5B58;&#x6570;&#x636E;&#x5E93;&#xFF0C;&#x8FD4;&#x56DE;&#x4E00;&#x4E2A;&#x7F13;&#x5B58;&#x6807;&#x8BC6;&#x3002;&#x4E4B;&#x540E;&#x6D4F;&#x89C8;&#x5668;&#x62FF;&#x8FD9;&#x4E2A;&#x6807;&#x8BC6;&#x548C;&#x670D;&#x52A1;&#x5668;&#x901A;&#x8BAF;&#x3002;&#x5982;&#x679C;&#x7F13;&#x5B58;&#x672A;&#x5931;&#x6548;&#xFF0C;&#x5219;&#x8FD4;&#x56DE;http&#x72B6;&#x6001;&#x7801;304&#x8868;&#x793A;&#x7EE7;&#x7EED;&#x4F7F;&#x7528;&#xFF0C;&#x4E8E;&#x662F;&#x5BA2;&#x6237;&#x7AEF;&#x7EE7;&#x7EED;&#x4F7F;&#x7528;&#x7F13;&#x5B58;&#xFF1B;&#x5982;&#x679C;&#x5931;&#x6548;&#xFF0C;&#x5219;&#x8FD4;&#x56DE;&#x65B0;&#x7684;&#x6570;&#x636E;&#x548C;&#x7F13;&#x5B58;&#x89C4;&#x5219;&#xFF0C;&#x6D4F;&#x89C8;&#x5668;&#x54CD;&#x5E94;&#x6570;&#x636E;&#x540E;&#xFF0C;&#x518D;&#x628A;&#x89C4;&#x5219;&#x5199;&#x5165;&#x7F13;&#x5B58;&#x6570;&#x636E;&#x5E93;&#x3002;</p>
+<p>&#x534F;&#x5546;&#x7F13;&#x5B58;&#x518D;&#x8BF7;&#x6C42;&#x6570;&#x636E;&#x548C;&#x6CA1;&#x6709;&#x7F13;&#x5B58;&#x662F;&#x4E00;&#x81F4;&#x7684;&#xFF0C;&#x8FD4;&#x56DE;&#x7ED3;&#x679C;304&#x7684;&#x8BDD;&#xFF0C;&#x4EC5;&#x4EC5;&#x8FD4;&#x56DE;&#x4E00;&#x4E2A;&#x72B6;&#x6001;&#x7801;&#xFF0C;&#x5E76;&#x6CA1;&#x6709;&#x5B9E;&#x9645;&#x7684;&#x6587;&#x4EF6;&#x5185;&#x5BB9;&#xFF0C;&#x56E0;&#x6B64;&#xFF0C;&#x534F;&#x5546;&#x7F13;&#x5B58;&#x4F18;&#x5316;&#x7684;&#x662F;&#x518D;&#x54CD;&#x5E94;&#x4F53;&#x4F53;&#x79EF;&#x4E0A;&#x7684;&#x8282;&#x7701;&#x3002;</p>
+<blockquote>
+<p>Last-Modified &amp; If-Modified-Since</p>
+</blockquote>
+<ul>
+<li>&#x670D;&#x52A1;&#x5668;&#x901A;&#x8FC7;Last-Modified&#x5B57;&#x6BB5;&#x544A;&#x77E5;&#x5BA2;&#x6237;&#x7AEF;&#xFF0C;&#x8D44;&#x6E90;&#x6700;&#x540E;&#x4E00;&#x6B21;&#x88AB;&#x4FEE;&#x6539;&#x7684;&#x65F6;&#x95F4;</li>
+<li>&#x6D4F;&#x89C8;&#x5668;&#x5C06;&#x8FD9;&#x4E2A;&#x503C;&#x548C;&#x5185;&#x5BB9;&#x4E00;&#x8D77;&#x8BB0;&#x5F55;&#x518D;&#x7F13;&#x5B58;&#x6570;&#x636E;&#x5E93;&#x4E2D;</li>
+<li>&#x4E0B;&#x4E00;&#x6B21;&#x8BF7;&#x6C42;&#x76F8;&#x540C;&#x8D44;&#x6E90;&#x65F6;&#xFF0C;&#x6D4F;&#x89C8;&#x5668;&#x4ECE;&#x81EA;&#x5DF1;&#x7684;&#x7F13;&#x5B58;&#x4E2D;&#x627E;&#x51FA;&#x201C;&#x4E0D;&#x786E;&#x5B9A;&#x662F;&#x5426;&#x8FC7;&#x671F;&#x7684;&#x201D;&#x7F13;&#x5B58;&#x3002;&#x56E0;&#x6B64;&#x5728;&#x8BF7;&#x6C42;&#x5934;&#x4E2D;&#x5C06;&#x4E0A;&#x6B21;&#x7684;Last-Modified&#x7684;&#x503C;&#x5199;&#x5165;&#x5230;&#x8BF7;&#x6C42;&#x5934;&#x7684;If-Modified-Since&#x5B57;&#x6BB5;</li>
+<li>&#x670D;&#x52A1;&#x5668;&#x4F1A;&#x5C06;If-Modified-Since&#x7684;&#x503C;&#x4E0E;Last-Modified&#x5B57;&#x6BB5;&#x8FDB;&#x884C;&#x5BF9;&#x6BD4;&#xFF0C;&#x5982;&#x679C;&#x76F8;&#x7B49;&#xFF0C;&#x5219;&#x8FD4;&#x56DE;304&#xFF0C;&#x8868;&#x793A;&#x672A;&#x4FEE;&#x6539;&#xFF1B;&#x53CD;&#x4E4B;&#xFF0C;&#x5219;&#x8868;&#x793A;&#x4FEE;&#x6539;&#x4E86;&#xFF0C;&#x54CD;&#x5E94;200&#x72B6;&#x6001;&#x7801;&#x548C;&#x6570;&#x636E;</li>
+</ul>
+<p>&#x7F3A;&#x9677;&#xFF1A;</p>
+<ol>
+<li>&#x5982;&#x679C;&#x8D44;&#x6E90;&#x66F4;&#x65B0;&#x901F;&#x5EA6;&#x662F;&#x79D2;&#x4EE5;&#x4E0B;&#x5355;&#x4F4D;&#xFF0C;&#x8BE5;&#x7F13;&#x5B58;&#x662F;&#x4E0D;&#x80FD;&#x88AB;&#x4F7F;&#x7528;&#x7684;&#xFF0C;&#x56E0;&#x4E3A;&#x5B83;&#x7684;&#x65F6;&#x95F4;&#x5355;&#x4F4D;&#x6700;&#x4F4E;&#x662F;&#x79D2;</li>
+<li>&#x5982;&#x679C;&#x6587;&#x4EF6;&#x662F;&#x901A;&#x8FC7;&#x670D;&#x52A1;&#x5668;&#x52A8;&#x6001;&#x751F;&#x6210;&#x7684;&#xFF0C;&#x90A3;&#x4E48;&#x8BE5;&#x65B9;&#x6CD5;&#x7684;&#x66F4;&#x65B0;&#x65F6;&#x95F4;&#x6C38;&#x8FDC;&#x662F;&#x751F;&#x6210;&#x7684;&#x65F6;&#x95F4;&#xFF0C;&#x5C3D;&#x7BA1;&#x6587;&#x4EF6;&#x53EF;&#x80FD;&#x6CA1;&#x6709;&#x53D8;&#x5316;&#xFF0C;&#x6240;&#x4EE5;&#x8D77;&#x4E0D;&#x5230;&#x7F13;&#x5B58;&#x7684;&#x4F5C;&#x7528;&#x3002;</li>
+</ol>
+<blockquote>
+<p>Etag &amp; If-None-Match</p>
+</blockquote>
+<p>Etag&#x5B58;&#x50A8;&#x7684;&#x662F;&#x6587;&#x4EF6;&#x7684;&#x7279;&#x6B8A;&#x6807;&#x8BC6;&#xFF08;&#x4E00;&#x822C;&#x662F;hash&#x751F;&#x6210;&#x7684;&#xFF09;&#xFF0C;&#x670D;&#x52A1;&#x5668;&#x5B58;&#x50A8;&#x7740;&#x6587;&#x4EF6;&#x7684;Etag&#x5B57;&#x6BB5;&#x3002;&#x4E4B;&#x540E;&#x7684;&#x6D41;&#x7A0B;&#x548C;Last-Modified&#x4E00;&#x81F4;&#x3002;</p>
+<p><em>Etag&#x7684;&#x4F18;&#x5148;&#x7EA7;&#x9AD8;&#x4E8E;Last-Modified</em></p>
+<h5 class="mume-header" id="%E7%BC%93%E5%AD%98%E6%95%88%E6%9E%9C%E9%AA%8C%E8%AF%81%E9%87%8D%E7%82%B9%E5%BC%BA%E7%BC%93%E5%AD%98%E7%9A%84%E5%87%A0%E7%A7%8D%E5%B1%9E%E6%80%A7%E5%80%BC%E6%95%88%E6%9E%9C">&#x7F13;&#x5B58;&#x6548;&#x679C;&#x9A8C;&#x8BC1;&#xFF08;&#x91CD;&#x70B9;&#x5F3A;&#x7F13;&#x5B58;&#x7684;&#x51E0;&#x79CD;&#x5C5E;&#x6027;&#x503C;&#x6548;&#x679C;&#xFF09;</h5>
+
+<h6 class="mume-header" id="%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AA%E6%96%B0%E7%9A%84express%E9%A1%B9%E7%9B%AE">&#x51C6;&#x5907;&#x5DE5;&#x4F5C;&#xFF1A;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x65B0;&#x7684;express&#x9879;&#x76EE;</h6>
+
+<ul>
+<li>mkdir demo &#x65B0;&#x5EFA;&#x4E00;&#x4E2A;&#x76EE;&#x5F55;</li>
+<li>cd demo &amp; npm init &#x521D;&#x59CB;&#x5316;npm,&#x6B64;&#x65F6;&#x4F1A;&#x81EA;&#x52A8;&#x751F;&#x6210;&#x4E00;&#x4E2A;package.json&#x6587;&#x4EF6;</li>
+<li>npm i express --save &#x5B89;&#x88C5;express&#x5305;</li>
+<li>&#x5728;&#x9879;&#x76EE;&#x6839;&#x76EE;&#x5F55;&#x4E0B;&#x65B0;&#x5EFA;&#x4E00;&#x4E2A;index.js&#x6587;&#x4EF6;&#xFF0C;&#x6587;&#x4EF6;&#x65B0;&#x589E;&#x5982;&#x4E0B;&#x5185;&#x5BB9;</li>
+</ul>
+<pre data-role="codeBlock" data-info="js" class="language-javascript"><span class="token keyword">const</span> express <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">&apos;express&apos;</span><span class="token punctuation">)</span>
+<span class="token keyword">const</span> path <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">&apos;path&apos;</span><span class="token punctuation">)</span>
+
+<span class="token keyword">const</span> router <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">&apos;./router&apos;</span><span class="token punctuation">)</span>
+
+<span class="token keyword">const</span> prot <span class="token operator">=</span> <span class="token number">3000</span>
+<span class="token keyword">const</span> app <span class="token operator">=</span> <span class="token function">express</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+app<span class="token punctuation">.</span><span class="token function">use</span><span class="token punctuation">(</span>router<span class="token punctuation">)</span>
+
+<span class="token keyword">const</span> cacheOptions <span class="token operator">=</span> <span class="token punctuation">{</span>
+    <span class="token comment">// TODO some prototype ...</span>
+<span class="token punctuation">}</span>
+
+app<span class="token punctuation">.</span><span class="token function">use</span><span class="token punctuation">(</span><span class="token string">&apos;/public&apos;</span><span class="token punctuation">,</span> express<span class="token punctuation">.</span><span class="token keyword">static</span><span class="token punctuation">(</span>path<span class="token punctuation">.</span><span class="token function">join</span><span class="token punctuation">(</span>__dirname<span class="token punctuation">,</span> <span class="token string">&apos;public&apos;</span><span class="token punctuation">)</span><span class="token punctuation">,</span> cacheOptions<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+app<span class="token punctuation">.</span><span class="token function">listen</span><span class="token punctuation">(</span>prot<span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token template-string"><span class="token string">`Example app listening on port </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>port<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">!`</span></span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+</pre><ul>
+<li>&#x5728;&#x6839;&#x76EE;&#x5F55;&#x4E0B;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;router&#x76EE;&#x5F55;&#xFF0C;&#x4E14;&#x5728;router&#x76EE;&#x5F55;&#x4E0B;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;index.js&#xFF0C;&#x6587;&#x4EF6;&#x6DFB;&#x52A0;&#x5982;&#x4E0B;&#x4EE3;&#x7801;</li>
+</ul>
+<pre data-role="codeBlock" data-info="js" class="language-javascript"><span class="token keyword">const</span> express <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">&apos;express&apos;</span><span class="token punctuation">)</span>
+<span class="token keyword">const</span> app <span class="token operator">=</span> <span class="token function">express</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token keyword">const</span> router <span class="token operator">=</span> express<span class="token punctuation">.</span><span class="token function">Router</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+router<span class="token punctuation">.</span><span class="token keyword">get</span><span class="token punctuation">(</span><span class="token string">&apos;/&apos;</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token parameter">req<span class="token punctuation">,</span> res<span class="token punctuation">,</span> next</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+    res<span class="token punctuation">.</span><span class="token function">sendFile</span><span class="token punctuation">(</span>path<span class="token punctuation">.</span><span class="token function">join</span><span class="token punctuation">(</span>__dirname<span class="token punctuation">,</span> <span class="token string">&apos;../View/demo.html&apos;</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</pre><ul>
+<li>&#x5728;&#x6839;&#x76EE;&#x5F55;&#x4E0B;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;View&#x76EE;&#x5F55;&#xFF0C;View&#x76EE;&#x5F55;&#x4E0B;&#x9762;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;demo.html,&#x6DFB;&#x52A0;html&#x4EE3;&#x7801;</li>
+</ul>
+<pre data-role="codeBlock" data-info="html" class="language-html"><span class="token doctype">&lt;!DOCTYPE html&gt;</span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span> <span class="token attr-name">lang</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>en<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>head</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">charset</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>UTF-8<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>viewport<span class="token punctuation">&quot;</span></span> <span class="token attr-name">content</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>width=device-width, initial-scale=1.0<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>title</span><span class="token punctuation">&gt;</span></span>Document<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>title</span><span class="token punctuation">&gt;</span></span>
+    <span class="token comment">&lt;!-- &#x5F15;&#x5165;css&#x6587;&#x4EF6; --&gt;</span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>link</span> <span class="token attr-name">rel</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>stylesheet<span class="token punctuation">&quot;</span></span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>/public/styles/demo.css<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>head</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>body</span><span class="token punctuation">&gt;</span></span>
+    <span class="token comment">&lt;!-- &#x5F15;&#x5165;&#x4E00;&#x5F20;&#x56FE;&#x7247; --&gt;</span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>img</span> <span class="token attr-name">rel</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>preloader<span class="token punctuation">&quot;</span></span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>/public/images/timg.jpg<span class="token punctuation">&quot;</span></span> <span class="token attr-name">alt</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&apos;</span>alt<span class="token punctuation">&apos;</span></span><span class="token punctuation">/&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">&gt;</span></span>&#x8FD9;&#x662F;&#x4E00;&#x5F20;&#x56FE;&#x7247;<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+    <span class="token comment">&lt;!-- &#x5F15;&#x5165;js&#x6587;&#x4EF6; --&gt;</span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>/public/js/demo.js<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span><span class="token script language-javascript"></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">&gt;</span></span>
+</pre><ul>
+<li>&#x5728;&#x6839;&#x76EE;&#x5F55;&#x4E0B;&#x65B0;&#x5EFA;public&#x76EE;&#x5F55;&#xFF0C; &#x76EE;&#x5F55;&#x4E0B;&#x9762;&#x65B0;&#x5EFA;&#x4E09;&#x4E2A;&#x6587;&#x4EF6;&#x5939;&#xFF1A;images,js,styles&#xFF1B;public&#x76EE;&#x5F55;&#x4EE5;&#x53CA;&#x6587;&#x4EF6;&#x5982;&#x4E0B;</li>
+</ul>
+<pre data-role="codeBlock" data-info class="language-"><code>- public
+    - images 
+        - timg.jpg
+    - js
+        - demo.js
+    - styles
+        - demo.css
+</code></pre><h6 class="mume-header" id="%E5%8C%BA%E5%88%86memory-cache-disk-cache">&#x533A;&#x5206;memory cache &amp; disk cache</h6>
+
+<blockquote>
+<p>&#x4FEE;&#x6539;&#x6839;&#x76EE;&#x5F55;&#x4E0B;&#x7684;index.js&#x6587;&#x4EF6;&#x5185;&#x5BB9;</p>
+</blockquote>
+<pre data-role="codeBlock" data-info="js" class="language-javascript"><span class="token keyword">const</span> cacheOptions <span class="token operator">=</span> <span class="token punctuation">{</span>
+    maxAge<span class="token punctuation">:</span> <span class="token string">&apos;20000&apos;</span><span class="token punctuation">,</span> <span class="token comment">// &#x8BBE;&#x7F6E;max-age&#x7684;&#x503C;&#x4E3A;20&#x79D2;</span>
+<span class="token punctuation">}</span>
+
+app<span class="token punctuation">.</span><span class="token function">use</span><span class="token punctuation">(</span><span class="token string">&apos;/public&apos;</span><span class="token punctuation">,</span> express<span class="token punctuation">.</span><span class="token keyword">static</span><span class="token punctuation">(</span>path<span class="token punctuation">.</span><span class="token function">join</span><span class="token punctuation">(</span>__dirname<span class="token punctuation">,</span> <span class="token string">&apos;public&apos;</span><span class="token punctuation">)</span><span class="token punctuation">,</span> cacheOptions<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre><p>&#x8FD0;&#x884C;node index.js&#xFF0C;&#x73B0;&#x5728;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x8BBF;&#x95EE;&#x6D4F;&#x89C8;&#x5668;localhost:3000,&#x67E5;&#x770B;&#x7F51;&#x7EDC;&#x8BF7;&#x6C42;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#x4E0B;&#x9762;&#x7684;&#x7ED3;&#x679C;&#xFF1A;</p>
+<blockquote>
+<p>&#x7B2C;&#x4E00;&#x6B21;&#x8BF7;&#x6C42;&#xFF0C;&#x6240;&#x6709;&#x6587;&#x4EF6;&#x90FD;&#x53D1;&#x9001;&#x4E86;&#x8BF7;&#x6C42;</p>
+</blockquote>
+<p><img src="./init001.png" alt="init001"></p>
+<blockquote>
+<p>&#x70B9;&#x51FB;&#x6D4F;&#x89C8;&#x5668;&#x4E0A;&#x65B9;&#x7684;&#x5237;&#x65B0;&#xFF0C;&#x518D;&#x6B21;&#x8BF7;&#x6C42;&#x6570;&#x636E;</p>
+</blockquote>
+<p><img src="./max-age001.png" alt="max-age001"></p>
+<p>&#x901A;&#x8FC7;&#x56FE;&#x7247;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#xFF0C;&#x76F8;&#x6BD4;&#x9996;&#x6B21;&#x8BF7;&#x6C42;&#xFF0C;&#x7B2C;&#x4E8C;&#x6B21;&#x7684;&#x8BF7;&#x6C42;&#x65F6;&#x95F4;&#x51E0;&#x4E4E;&#x5728;0ms&#x5C31;&#x5B8C;&#x6210;&#x4E86;&#xFF0C;&#x6570;&#x636E;&#x83B7;&#x53D6;&#x6765;&#x6E90;&#x53D8;&#x6210;&#x4E86;from memory cache,&#x6B64;&#x65F6;&#x9875;&#x9762;&#x7684;&#x6570;&#x636E;&#x662F;&#x4ECE;memory cache&#x4E2D;&#x76F4;&#x63A5;&#x53D6;&#x51FA;&#x6765;&#x7684;&#x3002;</p>
+<blockquote>
+<p>&#x6211;&#x4EEC;&#x590D;&#x5236;&#x6D4F;&#x89C8;&#x5668;&#x4E0A;&#x9762;&#x7684;&#x5730;&#x5740;&#xFF0C;&#x65B0;&#x6253;&#x5F00;&#x4E00;&#x4E2A;&#x6807;&#x7B7E;&#x9875;&#xFF08;&#x5148;&#x6253;&#x5F00;f12&#xFF09;</p>
+</blockquote>
+<p><img src="./max-age002.png" alt="max-age002"></p>
+<p>&#x4E0A;&#x56FE;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#xFF0C;&#x9875;&#x9762;&#x4E0A;&#x9762;&#x7684;&#x6570;&#x636E; <code>from disk cache</code>&#x5DF2;&#x7ECF;&#x6E05;&#x695A;&#x544A;&#x8BC9;&#x6211;&#x4EEC;&#xFF0C;&#x6570;&#x636E;&#x662F;&#x76F4;&#x63A5;&#x4ECE;disk cache&#x4E2D;&#x83B7;&#x53D6;&#x7684;&#x3002;&#x83B7;&#x53D6;&#x6570;&#x636E;&#x65F6;&#x95F4;8-9ms&#x6BD4;&#x4ECE;&#x670D;&#x52A1;&#x5668;&#x83B7;&#x53D6;&#x6570;&#x636E;&#x7684;15~17ms&#x8282;&#x7701;&#x4E86;&#x4E00;&#x534A;&#x7684;&#x65F6;&#x95F4;&#xFF0C;&#x8FD9;&#x90FD;&#x662F;&#x4F7F;&#x7528;&#x7F13;&#x5B58;&#x7684;&#x4F18;&#x52BF;&#x3002;</p>
+<p><em>disk cache&#x66F4;&#x6362;&#x6D4F;&#x89C8;&#x5668;&#x7684;&#x6807;&#x7B7E;&#x9875;&#xFF0C;&#x8FD8;&#x53EF;&#x4EE5;&#x4FDD;&#x5B58;&#x8D44;&#x6E90;&#xFF0C;&#x6570;&#x636E;&#x662F;&#x6301;&#x4E45;&#x7684;&#x4FDD;&#x5B58;&#x7684;&#xFF0C;&#x6CA1;&#x6709;&#x8FBE;&#x5230;&#x8FC7;&#x671F;&#x65F6;&#x95F4;&#xFF0C;&#x6570;&#x636E;&#x4F9D;&#x65E7;&#x53EF;&#x7528;&#x3002;&#x4F46;&#x662F;memory cache&#x7684;&#x6570;&#x636E;&#x4F1A;&#x88AB;&#x6E05;&#x7A7A;&#xFF0C;&#x6240;&#x4EE5;&#xFF0C;&#x6D4F;&#x89C8;&#x5668;&#x624D;&#x56DE;&#x53BB;disk cache&#x4E2D;&#x62FF;&#x6570;&#x636E;</em></p>
+<h6 class="mume-header" id="%E5%8C%BA%E5%88%86no-store-no-cache">&#x533A;&#x5206;no-store &amp; no-cache</h6>
+
+<ol>
+<li>&#x4FEE;&#x6539;View/index.html&#x6587;&#x4EF6;,&#x6BCF;&#x4E2A;&#x8BF7;&#x6C42;&#x90FD;&#x8BBE;&#x7F6E;&#x4E3A;&#x8BF7;&#x6C42;&#x591A;&#x6B21;</li>
+</ol>
+<pre data-role="codeBlock" data-info="html" class="language-html"><span class="token doctype">&lt;!DOCTYPE html&gt;</span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span> <span class="token attr-name">lang</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>en<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>head</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">charset</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>UTF-8<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>viewport<span class="token punctuation">&quot;</span></span> <span class="token attr-name">content</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>width=device-width, initial-scale=1.0<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>title</span><span class="token punctuation">&gt;</span></span>Document<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>title</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>link</span> <span class="token attr-name">rel</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>stylesheet<span class="token punctuation">&quot;</span></span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>/public/styles/demo.css<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>link</span> <span class="token attr-name">rel</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>stylesheet<span class="token punctuation">&quot;</span></span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>/public/styles/demo.css<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>head</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>body</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">&gt;</span></span>&#x8FD9;&#x662F;&#x4E00;&#x4E9B;&#x56FE;&#x7247;<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>img</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>/public/images/timg.jpg<span class="token punctuation">&quot;</span></span> <span class="token attr-name">alt</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&apos;</span>alt<span class="token punctuation">&apos;</span></span><span class="token punctuation">/&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>img</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>/public/images/timg.jpg<span class="token punctuation">&quot;</span></span> <span class="token attr-name">alt</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&apos;</span>alt<span class="token punctuation">&apos;</span></span><span class="token punctuation">/&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>img</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>/public/images/timg.jpg<span class="token punctuation">&quot;</span></span> <span class="token attr-name">alt</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&apos;</span>alt<span class="token punctuation">&apos;</span></span><span class="token punctuation">/&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>/public/js/demo.js<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span><span class="token script language-javascript"></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>/public/js/demo.js<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span><span class="token script language-javascript"></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span>
+
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">&gt;</span></span><span class="token script language-javascript">
+        <span class="token function">setTimeout</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">let</span> img <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">createElement</span><span class="token punctuation">(</span><span class="token string">&apos;img&apos;</span><span class="token punctuation">)</span>
+            img<span class="token punctuation">.</span>src <span class="token operator">=</span> <span class="token string">&apos;/public/images/timg.jpg&apos;</span>
+            document<span class="token punctuation">.</span>body<span class="token punctuation">.</span><span class="token function">appendChild</span><span class="token punctuation">(</span>img<span class="token punctuation">)</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token number">2000</span><span class="token punctuation">)</span>
+    </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">&gt;</span></span>
+</pre><ol start="2">
+<li>&#x540C;&#x65F6;&#x4FEE;&#x6539;&#x6839;&#x76EE;&#x5F55;&#x4E0B;&#x7684;index.js&#x6587;&#x4EF6;</li>
+</ol>
+<pre data-role="codeBlock" data-info="js" class="language-javascript"><span class="token keyword">const</span> cacheOptions <span class="token operator">=</span> <span class="token punctuation">{</span>
+    <span class="token comment">// maxAge: &apos;20000&apos;, // &#x6CE8;&#x91CA;&#x6389;&#xFF0C;&#x907F;&#x514D;&#x5F71;&#x54CD;</span>
+    
+    <span class="token function-variable function">setHeaders</span><span class="token punctuation">:</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">res<span class="token punctuation">,</span> path<span class="token punctuation">,</span> stat</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment">// + &#x6253;&#x5370;&#x51FA;&#x6BCF;&#x6B21;&#x8BF7;&#x6C42;public&#x76EE;&#x5F55;&#x4E0B;&#x7684;&#x8DEF;&#x5F84;&#x4FE1;&#x606F;</span>
+        console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>path<span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">Date</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toLocaleString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+        res<span class="token punctuation">.</span><span class="token keyword">set</span><span class="token punctuation">(</span><span class="token string">&apos;Cache-Control&apos;</span><span class="token punctuation">,</span> <span class="token string">&apos;no-cache&apos;</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+app<span class="token punctuation">.</span><span class="token function">use</span><span class="token punctuation">(</span><span class="token string">&apos;/public&apos;</span><span class="token punctuation">,</span> express<span class="token punctuation">.</span><span class="token keyword">static</span><span class="token punctuation">(</span>path<span class="token punctuation">.</span><span class="token function">join</span><span class="token punctuation">(</span>__dirname<span class="token punctuation">,</span> <span class="token string">&apos;public&apos;</span><span class="token punctuation">)</span><span class="token punctuation">,</span> cacheOptions<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre><ol start="3">
+<li>&#x6267;&#x884C;node index.js,&#x8D77;node&#x670D;&#x52A1;</li>
+</ol>
+<blockquote>
+<p>&#x901A;&#x8FC7;&#x6D4F;&#x89C8;&#x5668;&#x8BBF;&#x95EE;localhost:3000</p>
+</blockquote>
+<p><img src="./no-cache001.png" alt="no-cache001"><br>
+&#x4EE3;&#x7801;&#x5199;&#x4E86;&#x52A0;&#x8F7D;&#x591A;&#x6B21;&#xFF0C;&#x4F46;&#x662F;&#x5B9E;&#x9645;&#x4E0A;&#xFF0C;&#x6D4F;&#x89C8;&#x5668;&#x4E0A;&#x9762;&#x53EA;&#x8BB0;&#x5F55;&#x4E86;&#x4E00;&#x6B21;&#x8BF7;&#x6C42;&#x53D1;&#x9001;<br>
+<img src="./no-cache001_1.png" alt="no-cache001_1"><br>
+&#x670D;&#x52A1;&#x7AEF;&#x4E5F;&#x53EA;&#x6536;&#x5230;&#x4E86;&#x4E00;&#x6B21;&#x8BF7;&#x6C42;logger</p>
+<p><em>1. &#x9875;&#x9762;&#x7684;&#x591A;&#x4E2A;&#x8BF7;&#x6C42;&#x5408;&#x5E76;&#x5230;&#x4E00;&#x8D77;&#xFF0C;&#x53EA;&#x8BF7;&#x6C42;&#x4E86;&#x4E00;&#x6B21;&#xFF0C;&#x5F53;&#x6211;&#x4EEC;&#x5DF2;&#x7ECF;&#x8BF7;&#x6C42;&#x4E4B;&#x540E;&#xFF0C;&#x9875;&#x9762;&#x7684;&#x6570;&#x636E;&#xFF0C;&#x6D4F;&#x89C8;&#x5668;&#x4F1A;&#x7F13;&#x5B58;&#x8D77;&#x6765;&#xFF0C;&#x76F4;&#x63A5;&#x4ECE;&#x7F13;&#x5B58;&#x4E2D;&#x83B7;&#x53D6;&#xFF0C;&#x4F46;&#x662F;f12&#x770B;&#x4E0D;&#x5230;&#x6765;&#x81EA;&#x54EA;&#x79CD;&#x7F13;&#x5B58;&#x3002;&#x4F46;&#x662F;&#x6D4F;&#x89C8;&#x5668;&#x4F1A;&#x81EA;&#x52A8;&#x628A;html&#x5F53;&#x6B21;&#x8BF7;&#x6C42;&#x7684;&#x8D44;&#x6E90;&#x653E;&#x5230;memory cache&#x4E2D;&#xFF0C;&#x907F;&#x514D;&#x540C;&#x4E00;&#x4E2A;src&#x8BF7;&#x6C42;&#x591A;&#x6B21;&#x3002;</em><br>
+<em>2. &#x4F7F;&#x7528;setTimeout&#x5F02;&#x6B65;&#x53BB;&#x8BF7;&#x6C42;&#x540C;&#x6837;&#x7684;src&#x65F6;&#xFF0C;&#x5B9E;&#x9645;&#x4E0A;&#x670D;&#x52A1;&#x5668;&#x5E76;&#x6CA1;&#x6709;&#x6536;&#x5230;&#x5F02;&#x6B65;&#x7684;&#x8BF7;&#x6C42;&#xFF0C;&#x8BF7;&#x6C42;&#x8BB0;&#x5F55;&#x4F9D;&#x7136;&#x53EA;&#x6709;&#x4E00;&#x6B21;&#xFF0C;&#x7531;&#x6B64;&#x53EF;&#x4EE5;&#x770B;&#x51FA;setTimeout&#x5F02;&#x6B65;&#x53D6;&#x5230;&#x7684;&#x6570;&#x636E;&#x6765;&#x6E90;&#x4E8E;&#x7F13;&#x5B58;&#x4E2D;</em></p>
+<ol start="4">
+<li>&#x4FEE;&#x6539;&#x6839;&#x76EE;&#x5F55;&#x4E0B;&#x7684;index.js&#x6587;&#x4EF6;</li>
+</ol>
+<pre data-role="codeBlock" data-info="js" class="language-javascript"><span class="token comment">// ...</span>
+<span class="token keyword">const</span> cacheOptions <span class="token operator">=</span> <span class="token punctuation">{</span>
+    <span class="token comment">// maxAge: &apos;20000&apos;,</span>
+    
+    <span class="token function-variable function">setHeaders</span><span class="token punctuation">:</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">res<span class="token punctuation">,</span> path<span class="token punctuation">,</span> stat</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>path<span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">Date</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toLocaleString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+        res<span class="token punctuation">.</span><span class="token keyword">set</span><span class="token punctuation">(</span><span class="token string">&apos;Cache-Control&apos;</span><span class="token punctuation">,</span> <span class="token string">&apos;no-store&apos;</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token comment">// ....</span>
+</pre><p>&#x91CD;&#x542F;&#x670D;&#x52A1;&#xFF1A;node index.js</p>
+<blockquote>
+<p>&#x6E05;&#x7A7A;&#x6D4F;&#x89C8;&#x5668;&#x7F13;&#x5B58;&#x91CD;&#x65B0;&#x65B0;&#x52A0;&#x8F7D;&#x9875;&#x9762;</p>
+</blockquote>
+<p><img src="./no-store001.png" alt="no-store001"></p>
+<p>&#x6D4F;&#x89C8;&#x5668;&#x4E0A;&#x9762;&#x663E;&#x793A;&#xFF0C;js&#x6587;&#x4EF6;&#x88AB;&#x52A0;&#x8F7D;&#x4E86;&#x4E24;&#x6B21;&#xFF0C;img&#x56FE;&#x7247;&#x4E5F;&#x88AB;&#x52A0;&#x8F7D;&#x4E86;&#x4E24;&#x6B21;</p>
+<p><img src="./no-store002.png" alt="no-store002"></p>
+<p>&#x670D;&#x52A1;&#x5668;logger&#x663E;&#x793A;&#xFF0C;js&#x662F;&#x8FDE;&#x7EED;&#x52A0;&#x8F7D;&#x4E86;&#x4E24;&#x6B21;&#xFF0C;img&#x56FE;&#x7247;&#x4E5F;&#x52A0;&#x8F7D;&#x4E86;&#x4E24;&#x6B21;&#xFF0C;&#x7B2C;&#x4E8C;&#x6B21;&#x52A0;&#x8F7D;&#x65F6;&#x95F4;&#x662F;&#x5728;&#x7B2C;&#x4E00;&#x6B21;&#x52A0;&#x8F7D;&#x7684;2&#x79D2;&#x949F;&#x4E4B;&#x540E;&#x3002;</p>
+<p><mark><em>&#x6839;&#x636E;&#x4E0A;&#x8FF0;&#x60C5;&#x51B5;&#xFF0C;&#x53EF;&#x4EE5;&#x770B;&#x51FA;&#xFF1A;</em><br>
+<em>1. &#x5F02;&#x6B65;&#x8BF7;&#x6C42;&#xFF0C;&#x5728;&#x8BBE;&#x7F6E;Cache-Control: no-store&#x7684;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;memory cache&#x4E0D;&#x8D77;&#x4F5C;&#x7528;&#xFF0C;&#x4E0D;&#x4F1A;&#x7F13;&#x5B58;&#x5F02;&#x6B65;&#x8BF7;&#x6C42;&#x7684;&#x6570;&#x636E;</em><br>
+<em>2. memory cache&#x5728;&#x540C;&#x6B65;&#x8BF7;&#x6C42;&#x6570;&#x636E;&#x65F6;&#xFF0C;&#x4F9D;&#x65E7;&#x8D77;&#x4F5C;&#x7528;&#xFF0C;&#x6240;&#x4EE5;&#x540C;&#x65F6;&#x591A;&#x6B21;&#x8BF7;&#x6C42;&#x9759;&#x6001;&#x8D44;&#x6E90;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x53EA;&#x8BF7;&#x6C42;&#x4E86;&#x4E00;&#x6B21;</em></mark></p>
+<h6 class="mume-header" id="%E5%AE%9E%E8%B7%B5%E5%AF%B9%E6%AF%94%E7%BC%93%E5%AD%98etaglast-no-match">&#x5B9E;&#x8DF5;&#x5BF9;&#x6BD4;&#x7F13;&#x5B58;&#xFF08;Etag/Last-no-match&#xFF09;</h6>
+
+<p>&#x8FD9;&#x91CC;&#x6211;&#x4F7F;&#x7528;jpg&#x56FE;&#x7247;&#x7684;&#x52A0;&#x8F7D;&#x6765;&#x4E3E;&#x4F8B;</p>
+<ol>
+<li>&#x4FEE;&#x6539;&#x6839;&#x76EE;&#x5F55;&#x4E0B;&#x7684;index.js&#x6587;&#x4EF6;</li>
+</ol>
+<pre data-role="codeBlock" data-info="js" class="language-javascript"><span class="token comment">// ...</span>
+<span class="token keyword">const</span> cacheOptions <span class="token operator">=</span> <span class="token punctuation">{</span>
+    maxAge<span class="token punctuation">:</span> <span class="token string">&apos;4000&apos;</span><span class="token punctuation">,</span> <span class="token comment">// &#x53BB;&#x9664;&#x6CE8;&#x91CA;&#xFF0C;&#x4E14;&#x8FC7;&#x671F;&#x65F6;&#x95F4;&#x6539;&#x4E3A;4&#x79D2;</span>
+<span class="token punctuation">}</span>
+<span class="token comment">// ...</span>
+</pre><ol start="2">
+<li>&#x4FEE;&#x6539;router/index.js&#x6587;&#x4EF6;</li>
+</ol>
+<pre data-role="codeBlock" data-info="js" class="language-javascript"><span class="token keyword">const</span> express <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">&apos;express&apos;</span><span class="token punctuation">)</span>
+<span class="token keyword">var</span> path <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">&apos;path&apos;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> router <span class="token operator">=</span> express<span class="token punctuation">.</span><span class="token function">Router</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+router<span class="token punctuation">.</span><span class="token keyword">get</span><span class="token punctuation">(</span><span class="token regex">/.*jpg$/</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token parameter">req<span class="token punctuation">,</span> res</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">&apos;&#x6211;&#x6267;&#x884C;&#x4E86;&apos;</span><span class="token punctuation">,</span> req<span class="token punctuation">.</span>headers<span class="token punctuation">[</span><span class="token string">&apos;if-none-match&apos;</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+    <span class="token comment">// &#x7B80;&#x5355;&#x8BBE;&#x7F6E;&#x4E00;&#x4E2A;&#x503C;&#x3002;&#x4E00;&#x822C;&#x9879;&#x76EE;&#x4E2D;&#x4E0D;&#x4F1A;&#x8FD9;&#x4E48;&#x505A;&#xFF0C;&#x9879;&#x76EE;&#x4E2D;&#x4E00;&#x822C;&#x4F1A;&#x4F7F;&#x7528;&#x6587;&#x4EF6;&#x6458;&#x8981;&#xFF08;hash&#xFF09;&#xFF0C;&#x8FD9;&#x91CC;&#x4E3A;&#x4E86;&#x56FE;&#x7701;&#x4E8B;&#x76F4;&#x63A5;&#x4F7F;&#x7528;url</span>
+    <span class="token keyword">const</span> url <span class="token operator">=</span> path<span class="token punctuation">.</span><span class="token function">join</span><span class="token punctuation">(</span>__dirname<span class="token punctuation">,</span> <span class="token string">&apos;./public/images/timg.jpg&apos;</span><span class="token punctuation">)</span>
+    <span class="token comment">// &#x5982;&#x679C;&#x7528;&#x6237;&#x5DF2;&#x7ECF;&#x8BF7;&#x6C42;&#x8FC7;&#x4E00;&#x6B21;&#xFF0C;&#x76F4;&#x63A5;&#x544A;&#x8BC9;&#x6D4F;&#x89C8;&#x5668;&#x53BB;&#x7F13;&#x5B58;&#x91CC;&#x9762;&#x53D6;&#xFF0C;&#x7F13;&#x5B58;&#x6570;&#x636E;&#x53EF;&#x7528;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>req<span class="token punctuation">.</span>headers<span class="token punctuation">[</span><span class="token string">&apos;if-none-match&apos;</span><span class="token punctuation">]</span> <span class="token operator">===</span> url<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment">// &#x53EA;&#x8BBE;&#x7F6E;&#x5934;&#x90E8;&#xFF0C;&#x8FD4;&#x56DE;304</span>
+        res<span class="token punctuation">.</span><span class="token function">writeHead</span><span class="token punctuation">(</span><span class="token number">304</span><span class="token punctuation">,</span> <span class="token string">&apos;Not Modified&apos;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment">// &#x7ED3;&#x675F;&#x8BF7;&#x6C42;&#x54CD;&#x5E94;</span>
+        res<span class="token punctuation">.</span><span class="token function">end</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+        <span class="token comment">// &#x5982;&#x679C;&#x8FD8;&#x6CA1;&#x6709;&#x8BF7;&#x6C42;&#x8FC7;&#x56FE;&#x7247;&#xFF0C;&#x8BBE;&#x7F6E;&#x5934;&#x90E8;Etag,&#x8FD4;&#x56DE;&#x56FE;&#x7247;</span>
+        res<span class="token punctuation">.</span><span class="token function">setHeader</span><span class="token punctuation">(</span><span class="token string">&apos;Etag&apos;</span><span class="token punctuation">,</span> url<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        res<span class="token punctuation">.</span><span class="token function">sendFile</span><span class="token punctuation">(</span>path<span class="token punctuation">.</span><span class="token function">join</span><span class="token punctuation">(</span>__dirname<span class="token punctuation">,</span> <span class="token string">&apos;../public/images/timg.jpg&apos;</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+router<span class="token punctuation">.</span><span class="token keyword">get</span><span class="token punctuation">(</span><span class="token string">&apos;/&apos;</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token parameter">_req<span class="token punctuation">,</span> res</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+    res<span class="token punctuation">.</span><span class="token function">sendFile</span><span class="token punctuation">(</span>path<span class="token punctuation">.</span><span class="token function">join</span><span class="token punctuation">(</span>__dirname<span class="token punctuation">,</span> <span class="token string">&apos;../View/demo.html&apos;</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+module<span class="token punctuation">.</span>exports <span class="token operator">=</span> router
+</pre><blockquote>
+<p>&#x6E05;&#x7A7A;&#x7F13;&#x5B58;&#x5237;&#x65B0;&#x6D4F;&#x89C8;&#x5668;&#xFF08;&#x91CD;&#x65B0;&#x8BBF;&#x95EE;localhost:3000&#xFF09;</p>
+</blockquote>
+<p><img src="./etag001.png" alt="etag001"></p>
+<p>&#x4E0A;&#x56FE;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#xFF0C;&#x8BF7;&#x6C42;&#x90FD;&#x662F;&#x7ED3;&#x679C;&#x90FD;&#x662F;200&#xFF08;&#x6210;&#x529F;&#xFF09;&#xFF0C;jpg&#x56FE;&#x7247;&#x8BF7;&#x6C42;&#x65F6;&#x95F4;&#x4E3A;27ms</p>
+<blockquote>
+<p>&#x7D27;&#x63A5;&#x7740;&#x5237;&#x65B0;&#x9875;&#x9762;</p>
+</blockquote>
+<p><img src="./etag002.png" alt="etag002"></p>
+<p>&#x56FE;&#x4E2D;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x5BF9;&#x6BD4;&#x7B2C;&#x4E00;&#x6B21;&#x8BF7;&#x6C42;&#x548C;&#x7B2C;&#x4E8C;&#x6B21;&#x8BF7;&#x6C42;&#x56FE;&#x7247;&#x7684;&#x7ED3;&#x679C;&#xFF0C;&#x7B2C;&#x4E8C;&#x6B21;&#x8BF7;&#x6C42;&#x7ED3;&#x679C;&#x72B6;&#x6001;&#x7801;&#x4E3A;304&#xFF0C;&#x4E14;&#x8BF7;&#x6C42;&#x65F6;&#x95F4;&#x7531;&#x539F;&#x6765;&#x7684;27ms&#x53D8;&#x6210;&#x4E86;13ms</p>
+<p><img src="./etag003.png" alt="etag003"><br>
+<img src="./etag004.png" alt="etag004"></p>
+<p>&#x56FE;&#x4E2D;&#x8BF7;&#x6C42;&#x8FD4;&#x56DE;&#x72B6;&#x6001;&#x7801;&#x4E3A;<code>304 Not modified</code>(&#x6211;&#x4EEC;&#x5728;router/index.js&#x91CC;&#x9762;&#x8BBE;&#x7F6E;&#x7684;&#x503C;)&#xFF1B;&#x5E76;&#x4E14;&#x663E;&#x793A;&#x7B2C;&#x4E8C;&#x6B21;&#x8BF7;&#x6C42;&#x56FE;&#x7247;&#x65F6;&#xFF0C;&#x8BF7;&#x6C42;&#x5934;&#x4E2D;&#x5E26;&#x4E0A;&#x4E86;If-None-Match&#x5B57;&#x6BB5;&#xFF0C;&#x5C5E;&#x6027;&#x503C;&#x4E3A;&#x6211;&#x4EEC;&#x8BBE;&#x7F6E;&#x7684;url&#xFF1B;&#x4F46;&#x662F;&#x6211;&#x4EEC;&#x5728;&#x7B2C;&#x4E00;&#x6B21;&#x8BF7;&#x6C42;&#x4E2D;&#x8BF7;&#x6C42;&#x5934;&#x4E2D;&#x5E76;&#x6CA1;&#x6709;If-None-Match,&#x53D1;&#x9001;&#x8BF7;&#x6C42;&#x6211;&#x4EEC;&#x5E76;&#x6CA1;&#x6709;&#x81EA;&#x5DF1;&#x53BB;&#x8BBE;&#x7F6E;&#x8BF7;&#x6C42;&#xFF0C;&#x8BF4;&#x660E;&#x8FD9;&#x4E2A;If-None-Match&#x662F;&#x6D4F;&#x89C8;&#x5668;&#x81EA;&#x5DF1;&#x5E2E;&#x6211;&#x4EEC;&#x6DFB;&#x52A0;&#x4E0A;&#x53BB;&#x7684;&#xFF0C;&#x5982;&#x4E0B;&#x56FE;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#x7B2C;&#x4E00;&#x6B21;&#x8BF7;&#x6C42;&#x5E76;&#x6CA1;&#x6709;If-None-Match&#x3002;</p>
+<p><img src="./etag001_1.png" alt="etag001_1"></p>
+<p><em>&#x4E0A;&#x8FF0;&#x8FC7;&#x7A0B;&#x4E2D;&#xFF0C;&#x9875;&#x9762;&#x7B2C;&#x4E00;&#x6B21;&#x8BF7;&#x6C42;&#x56FE;&#x7247;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x670D;&#x52A1;&#x5668;&#x7AEF;&#x76F4;&#x63A5;&#x8FD4;&#x56DE;&#x9875;&#x9762;&#xFF1B;&#x5F53;&#x6211;&#x4EEC;&#x7684;&#x6D4F;&#x89C8;&#x5668;&#x7F13;&#x5B58;&#x8FC7;&#x671F;&#x540E;&#xFF08;max-age&#x8FC7;&#x671F;&#xFF09;&#xFF0C;&#x6D4F;&#x89C8;&#x5668;&#x8BF7;&#x6C42;&#x9875;&#x9762;&#x65F6;&#xFF0C;&#x5728;&#x8BF7;&#x6C42;&#x5934;&#x4E2D;&#x81EA;&#x52A8;&#x5E26;&#x4E0A;&#x4E86;If-None-Match&#x7684;&#x503C;&#xFF0C;&#x8FD9;&#x4E2A;&#x503C;&#x662F;&#x6211;&#x4EEC;&#x7B2C;&#x4E00;&#x6B21;&#x8FD4;&#x56DE;&#x56FE;&#x7247;&#x8BBE;&#x7F6E;&#x7684;&#x5934;&#x7684;Etag&#x7684;&#x503C;&#x3002;</em></p>
+<h6 class="mume-header" id="service-worker%E5%AE%9E%E8%B7%B5"><mark>Service Worker&#x5B9E;&#x8DF5;</mark></h6>
+
+<h5 class="mume-header" id="%E5%B8%B8%E8%A7%81%E7%BC%93%E5%AD%98%E7%9A%84%E5%BA%94%E7%94%A8">&#x5E38;&#x89C1;&#x7F13;&#x5B58;&#x7684;&#x5E94;&#x7528;</h5>
+
+<h6 class="mume-header" id="%E4%B8%8D%E7%BB%8F%E5%B8%B8%E6%94%B9%E5%8F%98%E7%9A%84%E8%B5%84%E6%BA%90%E5%8F%AF%E4%BB%A5%E4%BD%BF%E7%94%A8max-age%E8%AE%BE%E7%BD%AE%E4%B8%80%E4%B8%AA%E8%BE%83%E5%A4%A7%E7%9A%84%E7%BC%93%E5%AD%98%E6%97%B6%E9%97%B4%E5%80%BC">&#x4E0D;&#x7ECF;&#x5E38;&#x6539;&#x53D8;&#x7684;&#x8D44;&#x6E90;&#xFF0C;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;max-age&#x8BBE;&#x7F6E;&#x4E00;&#x4E2A;&#x8F83;&#x5927;&#x7684;&#x7F13;&#x5B58;&#x65F6;&#x95F4;&#x503C;</h6>
+
+<p>&#x8FD9;&#x79CD;&#x65B9;&#x5F0F;&#xFF0C;&#x5982;&#x679C;&#x6211;&#x4EEC;&#x7684;&#x8D44;&#x6E90;&#x6709;&#x66F4;&#x65B0;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x7ED3;&#x5408;&#x4F7F;&#x7528;&#x6587;&#x4EF6;&#x6458;&#x8981;&#xFF08;Hash&#x503C;&#xFF09;</p>
+<h5 class="mume-header" id="%E5%85%B1%E4%BA%AB%E7%BC%93%E5%AD%98">&#x5171;&#x4EAB;&#x7F13;&#x5B58;</h5>
+
+
+      </div>
+      
+      
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    </body></html>
