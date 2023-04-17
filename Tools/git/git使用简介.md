@@ -188,3 +188,38 @@ fatal: unable to access 'https://github.com/xzlgh/react_record.git/': The reques
   
 - 重新push，此时会提示输入密码，再重新输入正确的密码即可
 ```
+
+
+#### 警告
+
+```bash
+hint: Pulling without specifying how to reconcile divergent branches is
+hint: discouraged. You can squelch this message by running one of the following
+hint: commands sometime before your next pull:
+hint: 
+hint:   git config pull.rebase false  # merge (the default strategy)
+hint:   git config pull.rebase true   # rebase
+hint:   git config pull.ff only       # fast-forward only
+hint: 
+hint: You can replace "git config" with "git config --global" to set a default
+hint: preference for all repositories. You can also pass --rebase, --no-rebase,
+hint: or --ff-only on the command line to override the configured default per
+hint: invocation.
+```
+
+
+#### 撤回已经push的代码
+- git log查看commit
+- git reset --soft commitId. 软撤回，会保留提交前代码修改
+- 或 git reset --hard commitId 强制舍弃提交
+
+
+#### 如果在错误的分支上修改了代码
+- 首先撤销add
+- git stash
+- git checkout 正确分支名
+- git stash pop
+
+
+
+
