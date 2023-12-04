@@ -55,7 +55,6 @@ import 'resize-observer-polyfill/dist/ResizeObserver.global';
 
 3. 现在重新运行测试，ResizeObserver 应该能够被正确定义，而不会再出现 ReferenceError。
 
-
 ### 问题二
 
 #### 项目中使用了原生js去操作canves 
