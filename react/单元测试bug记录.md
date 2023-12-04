@@ -54,6 +54,7 @@ import 'resize-observer-polyfill/dist/ResizeObserver.global';
 
 
 ### 问题二
+
 #### 项目中使用了原生js去操作canves 
 
 <b>报错信息如下:<b/>
