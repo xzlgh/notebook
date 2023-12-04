@@ -40,7 +40,7 @@ npm install --save-dev resize-observer-polyfill
 
 或者使用 Yarn：
 
-````shell
+```shell
 yarn add --dev resize-observer-polyfill
 ```
 
