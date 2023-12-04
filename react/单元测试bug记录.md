@@ -5,6 +5,7 @@
 ### 问题一
 
 #### 项目中使用了ResizeObserver全局对象，写单元测试的时候出现报错
+
 <b>报错信息如下：</b>
 ```shell
 src/**/**.../**/index.test.tsx
@@ -22,6 +23,7 @@ ReferenceError: ResizeObserver is not defined
   18 |   useMount((): void => {
 ....
 ```
+
 报错信息提示，new ResizeObserver is not defined，提示未定义
 
 <b>分析以及解决方案</b>
@@ -48,6 +50,7 @@ yarn add --dev resize-observer-polyfill
 ```tsx
 import 'resize-observer-polyfill/dist/ResizeObserver.global';
 ```
+
 这将在测试环境中提供 `ResizeObserver` 的全局定义。
 
 3. 现在重新运行测试，ResizeObserver 应该能够被正确定义，而不会再出现 ReferenceError。
@@ -71,6 +74,7 @@ TypeError: Cannot set properties of null (setting 'font')
   23 |   if (context.measureText(text).width > width) {
   24 |     const left = initLeftRange(text, startIndex, ellipsisPosition);
 ```
+
 根据上述的报错信息，这里提示font是一个空
 
 <b>分析以及解决方案</b>
