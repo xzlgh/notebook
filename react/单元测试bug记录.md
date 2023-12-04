@@ -2,11 +2,9 @@
 
 ## react17 + umi 3.x + @testing-library/react  + ts 单元测试
 
-### 问题记录
+### 问题一
 
-#### 问题一
-
-##### 项目中使用了ResizeObserver全局对象，写单元测试的时候出现报错
+#### 项目中使用了ResizeObserver全局对象，写单元测试的时候出现报错
 <b>报错信息如下：</b>
 ```shell
 src/**/**.../**/index.test.tsx
@@ -53,4 +51,11 @@ import 'resize-observer-polyfill/dist/ResizeObserver.global';
 这将在测试环境中提供 `ResizeObserver` 的全局定义。
 
 现在重新运行测试，ResizeObserver 应该能够被正确定义，而不会再出现 ReferenceError。
+
+
+### 问题二
+#### 项目中使用了原生js去操作canves 
+
+
+
 
