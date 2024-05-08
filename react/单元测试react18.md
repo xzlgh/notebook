@@ -194,9 +194,44 @@ describe('useReciveMessage', () => {
     expect(callbackMap[ReceiveMessageTypes.Add]).not.toHaveBeenCalled();
   });
 });
+```
 
+上述实例中的__IsProd__是定义的全局变量，原始代码中来源于const _isProd = process.env.NODE_ENV === 'production';该变量会在.umirc.ts中进行设置全局变量，具体如下：
+```ts
+import { defineConfig } from 'umi';
+export default defineConfig({
+  // ...
+  define: {
+    // ...
+      __IsProd__: _isProd
+    // ...
+  }
+  // ...
+})
 
 ```
+
+但是在jest中如果想要使用全局的变量，则需要在jest.config.js中进行配置，具体如下：
+
+```js
+import type { Config } from 'jest';
+
+export default async (): Promise<Config> => {
+  return {
+    // ...
+    global: {
+      // ...
+      '__IsProd__':  false,
+      // ...
+    }
+    // ...
+  }
+}
+
+```
+
+
+
 
 
 
