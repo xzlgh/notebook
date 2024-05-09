@@ -231,6 +231,138 @@ export default async (): Promise<Config> => {
 ```
 
 
+##### 测试iframe标签load事件
+
+待测试示例代码如下：
+
+```ts
+import Loading from '@/components/loadingbox/Loading';
+import { useState } from 'react';
+import { useIframe } from './hooks/useIframe';
+import { handleReceiveMessage } from './methods';
+
+const Demo = () => {
+  const [loading, setLoading] = useState<boolean>(true);
+
+  const { src } = useIframe();
+
+  const onLoaded = () => {
+    setLoading(false);
+  };
+
+  const receiveMessage = (event) => {
+    // receive message and handling
+    // ...
+    handleReceiveMessage(event);
+  }
+
+  useEffect(() => {
+    window.addEventListener('message', receiveMessage);
+    return () => {
+      window.addEventListener('message', receiveMessage);
+    };
+  }, []);
+
+  return (
+    <>
+      <iframe onLoad={onLoaded} src={src} frameBorder="0" width={'100%'} height={'100%'} />
+      <Loading isShow={loading} className="loading-box"/>
+    </>
+  );
+};
+
+export default Demo;
+
+```
+
+完整的测试方案：
+
+```ts
+import { render, waitFor } from '@testing-library/react';
+import Demo from '.';
+import { useIframe } from './hooks/useIframe';
+import { handleReceiveMessage } from './methods';
+import React from 'react';
+
+jest.mock('./hooks/useIframe', () => ({ useIframe: jest.fn() }));
+jest.mock('./methods', () => ({ handleReceiveMessage: jest.fn() }));
+
+describe('GinAi', () => {
+  const mockUseIframe = useIframe as jest.Mock;
+  const mockHandleReceiveMessage = handleReceiveMessage as jest.Mock;
+
+  beforeEach(() => {
+    jest.resetModules();
+    jest.clearAllMocks();
+  });
+
+  it('renders iframe and loading component', () => {
+    mockUseIframe.mockReturnValue({ src: 'https://example.com' });
+
+    const { container } = render(<GinAi />);
+
+    const iframeElement = container.querySelector('iframe');
+    const loadingElement = container.querySelector('.loading-box');
+
+    expect(iframeElement).toBeInTheDocument();
+    expect(iframeElement).toHaveAttribute('src', 'https://example.com');
+    expect(loadingElement).toBeInTheDocument();
+  });
+
+  it('hides loading component after iframe is loaded', () => {
+    mockUseIframe.mockReturnValue({ src: 'https://example.com' });
+    const setLoadingMock = jest.fn();
+
+    jest.spyOn(React, 'useState').mockReturnValueOnce([true, setLoadingMock]);
+
+    const { container } = render(<GinAi />);
+
+    const iframeElement = container.querySelector('iframe');
+    const loadingElement = container.querySelector('.loading-box');
+
+    expect(iframeElement).toBeInTheDocument();
+    expect(loadingElement).toBeInTheDocument();
+
+    iframeElement?.dispatchEvent(new Event('load'));
+
+    waitFor(() => {
+      expect(setLoadingMock).toHaveBeenCalledWith(false);
+      expect(loadingElement).not.toBeInTheDocument();
+    });
+  });
+
+  it('handles received message of type "InsertTagString"', () => {
+    mockUseIframe.mockReturnValue({ src: 'https://example.com' });
+
+    const { container } = render(<GinAi />);
+
+    const iframeElement = container.querySelector('iframe');
+    iframeElement?.dispatchEvent(new Event('load'));
+
+    const message = {
+      type: 'messageData',
+      data: { result: 'example' },
+    };
+
+    const messageEvent = new MessageEvent('message', {
+      data: { result: 'example' },
+      origin: window.location.origin,
+    });
+
+    window.dispatchEvent(messageEvent);
+
+    waitFor(() => {
+      expect(onMessageInsertTagStringMock).toHaveBeenCalledWith({ result: 'example' });
+      expect(mockHandleReceiveMessage).toHaveBeenCalledWith({
+        data: { result: 'example' },
+        origin: window.location.origin,
+      });
+    });
+  });
+});
+
+```
+
 
 
 
