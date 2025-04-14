@@ -476,4 +476,20 @@ Ran all test suites matching /src\/components\/EmptyData/i.
   ```
 重新启动测试，即可解决这个问题。
 
+##### 当待测文件中，不存在报错信息提示的内容时，建议检查子组件中是否存在
+
+例如：
+
+报错信息如下
+![errors message](./images/setGlobal_is_not_function.png)
+
+测试文件：
+![testFile](./images/setGlobal_is_not_function_test_file.png)
+
+根据报错信息在待测的组件中搜索setGlobal，但是并未搜索到该函数，进入子组件中搜索，深层查找，发现了该bug。子组件中，有setGlobal,但是由于测试文件中对应该返回的useGlobalState,子组件中使用了setGlobal。
+
+![use setGlobal](./images/use_setGlobal_function.png)
+
+
+
 
