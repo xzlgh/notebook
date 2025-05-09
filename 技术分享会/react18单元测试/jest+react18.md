@@ -65,7 +65,7 @@ test('adds 1 + 2 to equal 3', () => {
 });  
 ```
 
-在单测足够简单的情况下，可以不使用测试套件（descript);多个测试用例可以作为一个测试套件；测试套件的第一个参数同样可以描述测试套件。
+在单测足够简单的情况下，可以不使用测试套件（descript);多个测试用例可以作为一个测试套件,测试套件可以嵌套测试套件；测试套件的第一个参数同样可以描述测试套件。
 
 ==无论是单元测试、集成测试还是E2E测试，必须具备确定性。（即必须保障一个完整的单元测试中必须要有断言）；一个不确定的单元测试是没有意义的==
 
@@ -87,6 +87,8 @@ React项目：Jest + React Testing Library + MSW（Mock API）
 Vue项目：Vitest + Vue Test Utils + Testing Library
 
 ### 编写高质量测试的实践
+
+#### 一些基本原则和技巧
 
 <b>测试的FIST原则</b>
 
@@ -120,68 +122,702 @@ Vue项目：Vitest + Vue Test Utils + Testing Library
 - 过度mock: mock的数据时，应当重点mock外部依赖；
 - 过度细节测试：避免断言结果过度依赖于细节（如UI结构），应该重点基于用户行为测试。
 
+<b>示例：</b>
+
+![问题单元测试](./images/低质量的单元测试.jpg)
+
+问题点：
+
+- 测试目标不明确；
+- 测试用例可读性低 —— 测试用例没有具体描述：在什么条件下得到什么结果；
+- 测试边界不清晰；
+- 过度mock;
+
+*纠正后的单元测试代码请参考：src/views/components/variables/components/Formula/method/\_\_tests\_\_/inputCursor.test.ts*
+
 #### 函数测试
 
-单元测试中函数的测试比较简单，单个函数也是单元测试的最小测试单位；函数的测试，测试用例覆盖场景全面，尤其是极限值的测试用例应重点写。
+单元测试中函数的测试比较简单，单个函数也是单元测试的最小测试单位；测试用例覆盖场景应该全面，尤其侧重对极限值做测试。
 
 ##### 包含定时器的函数单元测试
 
+*单元测试的测试用例中，不要使用setTimeout去等待断言，可以使用虚拟定时器jest.useFakeTimers解决定时器问题*
+
+* 示例
+  
+```ts
+// 待测函数
+import { FormulaRefType } from '../types';
+
+export function moveEnd(formulaRef: FormulaRefType) {
+  formulaRef.timer = setTimeout(() => {
+    formulaRef.inputElement!.focus();
+    const v = formulaRef.inputElement?.value;
+    const len = v?.length as number;
+    if (len > 0) {
+      formulaRef.inputElement!.setSelectionRange(len, len);
+    }
+    clearTimeout(formulaRef.timer!);
+  }, 10);
+}
+```
+
+```ts
+// 测试代码
+import { FormulaRefType } from '../../types';
+import { moveEnd, moveTo, getInputCursorPosition } from '../inputCursor';
+
+describe('moveEnd', () => {
+  let mockFormulaRef: FormulaRefType;
+  let mockInputElement: HTMLTextAreaElement;
+  
+  beforeEach(() => {
+    // ceate mock dom
+    mockInputElement = {
+      value: '',
+      focus: jest.fn(),
+      setSelectionRange: jest.fn(),
+      selectionStart: 0,
+      selectionEnd: 0,
+    } as unknown as HTMLTextAreaElement;
+    
+    // create mock formulaRef
+    mockFormulaRef = {
+      inputElement: mockInputElement,
+      timer: null,
+    } as unknown as FormulaRefType;
+    
+    // clear all mock messages.
+    jest.clearAllMocks();
+    // 使用虚拟定时器；
+    jest.useFakeTimers();
+    // 给timeout打桩 —— 保留clearTimeout和setTimeout的实际功能，但是使其能够被断言；
+    jest.spyOn(global, 'clearTimeout');
+    jest.spyOn(global, 'setTimeout');
+  });
+
+  // 描述测试用例具体测试什么内容
+  it('should focus input and set cursor to end when text exists', () => {
+    mockInputElement.value = 'test value';
+    
+    moveEnd(mockFormulaRef);
+    jest.advanceTimersByTime(20); // 定时器快进20毫秒后；避免影响单元测试执行速度
+    
+    // clearTimeout被调用
+    expect(clearTimeout).toBeCalledWith(mockFormulaRef.timer);
+    // 断言聚焦函数被执行
+    expect(mockInputElement.focus).toHaveBeenCalledTimes(1);
+    // 断言光标会移动到最末尾的位置
+    expect(mockInputElement.setSelectionRange).toHaveBeenCalledWith(10, 10);
+  });
+
+  afterEach(() => {
+    jest.useRealTimers(); // 恢复成真实的定时器
+  });
+});
+
+```
 
 #### 组件测试
 
+测试组件的时候，尽量不要使用querySelector去找元素（迫不得已时才可用，即使使用，也不要出现选择具体第几个元素这种操作。）
+
+⚠️ 为什么不推荐 querySelector？
+- 易受 DOM 结构变化影响（如 CSS 类名或标签变化）—— 违背了单元测试的FIST原则；
+- 违背 Testing Library 的[用户视角测试原则](https://testing-library.com/docs/guiding-principles/)
+- 缺乏可读性（无法直观看出查询目标）
+
+例如以下的单元测试：
+
+![组件测试不推荐使用querySelector](./images/组件测试不推荐使用querySelector.jpg)
+
+假设我当前想要断言第二个save按钮是否是禁用状态；常规选中元素的方式有以下三种：
+
+1. getByRole + 文本内容
+2. getAllByRole + 索引
+3. Test ID
+4. 如果testId也没办法解决的时候（testId基本上都是可以解决的,第三方库的组件可能出现不接受这个data-*属性），使用querySelector —— 脆弱，不推荐
+
+针对以上内容的单元测试代码
+
+*src/views/routes/Tools/TableEdit/index*
+![testId](./images/组件测试使用testId替代掉querySelecotr.jpg)
+
+
+
 #### hooks测试
 
-#### 特殊的测试
+##### 测试window.addEventListener('message', receiveMessage)相关的hooks
+示例代码位置：src/views/routes/GinAi/hooks/useReceiveMessage
 
-组件测试实战
+待测试代码
 
-测试什么？
+```ts
+// useReceiveMessage.ts
+import { useMemoizedFn } from 'ahooks';
+import { useEffect } from 'react';
 
-渲染是否正确（文本、样式、子组件）
+export enum ReceiveMessageTypes {
+  Add = 'add',
+  Delete = 'delete',
+  Update = 'update',
+  Select = 'select',
+}
 
-交互逻辑（点击、输入、事件触发）
+export interface ReceiveMessageData {}
 
-状态变化（如useState、Vue reactive）
+export interface OpenReceivedMessage {
+  type: ReceiveMessageTypes;
+  data: ReceiveMessageData;
+}
 
-```jsx
-// React组件测试示例  
-test('button click triggers onSubmit', async () => {  
-  const mockSubmit = jest.fn();  
-  render(<Form onSubmit={mockSubmit} />);  
-  fireEvent.click(screen.getByRole('button'));  
-  expect(mockSubmit).toHaveBeenCalled();  
-});  
+export type ReceiveMessageCallbackMap = {
+  [key in ReceiveMessageTypes]?: (data: ReceiveMessageData) => void;
+};
+
+export const useReciveMessage = (callbackMap?: ReceiveMessageCallbackMap) => {
+  const receiveMessage = useMemoizedFn((e: MessageEvent<OpenReceivedMessage>) => {
+    const { origin, data: messageInfo } = e;
+    if (origin !== window.location.origin && __IsProd__) {
+      return;
+    }
+    const { type, data } = messageInfo;
+    callbackMap?.[type]?.(data);
+  });
+
+  useEffect(() => {
+    window.addEventListener('message', receiveMessage);
+    return () => {
+      window.addEventListener('message', receiveMessage);
+    };
+  }, []);
+};
+
 ```
 
-Mock技巧
+上述的hooks使用方式：
 
-如何Mock API请求？（MSW/axios-mock-adapter）
+```ts
+import {useReciveMessage, ReceiveMessageTypes} from './useReceiveMessage';
 
-如何Mock第三方库？（jest.mock）
+const useHooksComponent = () => {
+  const handleAdd = () => {};
+  const handleDelete = () => {};
 
-快照测试
+  useReciveMessage({
+    [ReceiveMessageTypes.Add]: handleAdd,
+    [ReceiveMessageTypes.Delete]: handleDelete,
+    // ...
+  })
+}
+```
 
-适用场景：UI组件防止意外变更
+单元测试
 
-注意：避免过度依赖快照！
+```ts
+// useReceiveMessage.test.ts
+import { useEffect } from 'react';
+import { renderHook, waitFor } from '@testing-library/react';
+import { useReciveMessage, OpenReceivedMessage, ReceiveMessageTypes } from '.';
 
+describe('useReciveMessage', () => {
+  // spyOn window.addEventListener;
+  let mockAddEventListener: jest.SpyInstance;
+  let mockRemoveEventListener: jest.SpyInstance;
+
+  beforeEach(() => {
+    mockAddEventListener = jest.spyOn(window, 'addEventListener');
+    mockRemoveEventListener = jest.spyOn(window, 'removeEventListener');
+  });
+
+  afterEach(() => {
+    // restore the mock modules.
+    mockAddEventListener.mockRestore();
+    mockRemoveEventListener.mockRestore();
+  });
+
+  it('should add and remove event listener', async () => {
+    const callbackMap = {
+      [ReceiveMessageTypes.Add]: jest.fn(),
+    };
+
+    await renderHook(() => useReciveMessage(callbackMap));
+
+    waitFor(() => {
+      expect(mockAddEventListener).toHaveBeenCalledTimes(1);
+      expect(mockAddEventListener).toHaveBeenCalledWith('message', expect.any(Function));
+
+      expect(mockRemoveEventListener).toHaveBeenCalledTimes(1);
+      expect(mockRemoveEventListener).toHaveBeenCalledWith('message', expect.any(Function));
+    });
+  });
+
+  it('should call the callback function when receiving a matching message', () => {
+    const callbackMap = {
+      [ReceiveMessageTypes.Add]: jest.fn(),
+    };
+
+    renderHook(() => useReciveMessage(callbackMap));
+
+    const mockMessageEvent: MessageEvent<OpenReceivedMessage> = {
+      origin: window.location.origin,
+      data: {
+        type: ReceiveMessageTypes.Add,
+        data: { result: 'example' },
+      },
+    } as MessageEvent<OpenReceivedMessage>;
+
+    // Get the receiveMessage function
+    const receiveMessageHandler = mockAddEventListener.mock.calls[0][1];
+
+    receiveMessageHandler(mockMessageEvent);
+
+    expect(callbackMap[ReceiveMessageTypes.Add]).toHaveBeenCalledTimes(1);
+    expect(callbackMap[ReceiveMessageTypes.Add]).toHaveBeenCalledWith({
+      result: 'example',
+    });
+  });
+
+  it('should not call the callback function when receiving a non-matching message', () => {
+    const callbackMap = {
+      [ReceiveMessageTypes.Unknown]: jest.fn(),
+    };
+
+    renderHook(() => useReciveMessage(callbackMap));
+
+    const mockMessageEvent: MessageEvent<OpenReceivedMessage> = {
+      origin: window.location.origin,
+      data: {
+        type: ReceiveMessageTypes.Add,
+        data: { result: 'example' },
+      },
+    } as MessageEvent<OpenReceivedMessage>;
+
+    const receiveMessageHandler = mockAddEventListener.mock.calls[0][1];
+
+    receiveMessageHandler(mockMessageEvent);
+
+    expect(callbackMap[ReceiveMessageTypes.Unknown]).not.toHaveBeenCalled();
+  });
+
+  it('should not call the callback function when origin is different in production', () => {
+    const callbackMap = {
+      [ReceiveMessageTypes.Add]: jest.fn(),
+    };
+
+    /**
+     * Modify the return value of __IsProd__ in the global object inside jest.config.js
+     */
+    Object.defineProperty(global, '__IsProd__', {
+      value: true,
+    });
+
+    renderHook(() => useReciveMessage(callbackMap));
+
+    const mockMessageEvent: MessageEvent<OpenReceivedMessage> = {
+      origin: 'https://example.com',
+      data: {
+        type: ReceiveMessageTypes.Add,
+        data: { result: 'example' },
+      },
+    } as MessageEvent<OpenReceivedMessage>;
+
+    const receiveMessageHandler = mockAddEventListener.mock.calls[0][1];
+
+    receiveMessageHandler(mockMessageEvent);
+
+    expect(callbackMap[ReceiveMessageTypes.Add]).not.toHaveBeenCalled();
+  });
+});
+```
+
+上述实例中的__IsProd__是定义的全局变量，原始代码中来源于const _isProd = process.env.NODE_ENV === 'production';该变量会在.umirc.ts中进行设置全局变量，具体如下：
+```ts
+import { defineConfig } from 'umi';
+export default defineConfig({
+  // ...
+  define: {
+    // ...
+      __IsProd__: _isProd
+    // ...
+  }
+  // ...
+})
+
+```
+
+但是在jest中如果想要使用全局的变量，则需要在jest.config.js中进行配置，具体如下：
+
+```js
+import type { Config } from 'jest';
+
+export default async (): Promise<Config> => {
+  return {
+    // ...
+    global: {
+      // ...
+      '__IsProd__':  false,
+      // ...
+    }
+    // ...
+  }
+}
+
+```
+
+##### 测试iframe标签load事件
+
+示例代码位置： src/views/routes/GinAi/index
+
+待测试示例代码如下：
+
+```ts
+import Loading from '@/components/loadingbox/Loading';
+import { useState } from 'react';
+import { useIframe } from './hooks/useIframe';
+import { handleReceiveMessage } from './methods';
+
+const Demo = () => {
+  const [loading, setLoading] = useState<boolean>(true);
+
+  const { src } = useIframe();
+
+  const onLoaded = () => {
+    setLoading(false);
+  };
+
+  const receiveMessage = (event) => {
+    // receive message and handling
+    // ...
+    handleReceiveMessage(event);
+  }
+
+  useEffect(() => {
+    window.addEventListener('message', receiveMessage);
+    return () => {
+      window.addEventListener('message', receiveMessage);
+    };
+  }, []);
+
+  return (
+    <>
+      <iframe onLoad={onLoaded} src={src} frameBorder="0" width={'100%'} height={'100%'} />
+      <Loading isShow={loading} className="loading-box"/>
+    </>
+  );
+};
+
+export default Demo;
+
+```
+
+完整的测试方案：
+
+```ts
+import { render, waitFor } from '@testing-library/react';
+import Demo from '.';
+import { useIframe } from './hooks/useIframe';
+import { handleReceiveMessage } from './methods';
+import React from 'react';
+
+jest.mock('./hooks/useIframe', () => ({ useIframe: jest.fn() }));
+jest.mock('./methods', () => ({ handleReceiveMessage: jest.fn() }));
+
+describe('GinAi', () => {
+  const mockUseIframe = useIframe as jest.Mock;
+  const mockHandleReceiveMessage = handleReceiveMessage as jest.Mock;
+
+  beforeEach(() => {
+    jest.resetModules();
+    jest.clearAllMocks();
+  });
+
+  it('renders iframe and loading component', () => {
+    mockUseIframe.mockReturnValue({ src: 'https://example.com' });
+
+    const { container } = render(<GinAi />);
+
+    const iframeElement = container.querySelector('iframe');
+    const loadingElement = container.querySelector('.loading-box');
+
+    expect(iframeElement).toBeInTheDocument();
+    expect(iframeElement).toHaveAttribute('src', 'https://example.com');
+    expect(loadingElement).toBeInTheDocument();
+  });
+
+  it('hides loading component after iframe is loaded', () => {
+    mockUseIframe.mockReturnValue({ src: 'https://example.com' });
+    const setLoadingMock = jest.fn();
+
+    jest.spyOn(React, 'useState').mockReturnValueOnce([true, setLoadingMock]);
+
+    const { container } = render(<GinAi />);
+
+    const iframeElement = container.querySelector('iframe');
+    const loadingElement = container.querySelector('.loading-box');
+
+    expect(iframeElement).toBeInTheDocument();
+    expect(loadingElement).toBeInTheDocument();
+
+    iframeElement?.dispatchEvent(new Event('load'));
+
+    waitFor(() => {
+      expect(setLoadingMock).toHaveBeenCalledWith(false);
+      expect(loadingElement).not.toBeInTheDocument();
+    });
+  });
+
+  it('handles received message of type "InsertTagString"', () => {
+    mockUseIframe.mockReturnValue({ src: 'https://example.com' });
+
+    const { container } = render(<GinAi />);
+
+    const iframeElement = container.querySelector('iframe');
+    iframeElement?.dispatchEvent(new Event('load'));
+
+    const message = {
+      type: 'messageData',
+      data: { result: 'example' },
+    };
+
+    const messageEvent = new MessageEvent('message', {
+      data: { result: 'example' },
+      origin: window.location.origin,
+    });
+
+    window.dispatchEvent(messageEvent);
+
+    waitFor(() => {
+      expect(onMessageInsertTagStringMock).toHaveBeenCalledWith({ result: 'example' });
+      expect(mockHandleReceiveMessage).toHaveBeenCalledWith({
+        data: { result: 'example' },
+        origin: window.location.origin,
+      });
+    });
+  });
+});
+
+```
 
 ### 常见问题与调试技巧
-典型问题集锦
 
-“测试通过但线上报错？” → 检查Mock是否过度
+#### TODO 常见的测试技巧mock篇
 
-“测试耗时太长？” → 使用jest --watch或vitest --ui
+mock测试数据要根据实际代码去判断，哪些该mock哪些不该。可以参考如下：
 
-“如何测试异步逻辑？” → async/await + act()
+- 引入的外部函数（可进行mock，方便断言）;
+- 引入的api函数建议mock;
+- 引入的自定义hooks函数可以mock;
+- 引入的外部组件，复杂的可以mock，简单的不应该mock;
 
-调试技巧
+例如以下示例代码即不需要mock
 
-使用screen.debug()输出DOM结构
+![不需要mock子组件](./images/不需要mock组件001.jpg)
 
-在测试中插入console.log（需谨慎）
 
-利用Chrome DevTools调试Jest测试
+
+是所有依赖全mock，还是有哪些保留？
+还有数据如果每次都全量mock，单测文件好大
+是不是 object.A=value,还是每次都mock一个新的object之类的
+
+还有异步调接口的、useEffect的单测之类的
+组件里面有异步调用一个套另一个的这种呀
+
+可以直接current调用组件内部的方法这种（hooks）
+
+还有组件里面有很多的小分支， 别入 ||  && ？：比较多，该怎么办，这样mock数据得好多份
+
+组件里面全都是调用的子组件，然后里面的事件都是子组件触发的，单测该怎么写,点击子组件触发事件,触发回来的数据还挺复杂，还是父组件传进去的
+
+
+
+##### 如何mock掉外部依赖?
+
+##### 如何mock外部依赖中的部分函数？
+
+##### 怎么mock子组件？
+
+
+#### 典型问题集锦
+
+##### 遇到act报错提示
+
+<b>缺少act包裹</b>
+
+![act报错提示](./images/没有使用act报错.jpg)
+
+找到报错文件：拷贝最靠近报错信息的测试用例描述，搜索到具体位置；
+然后给render方法套一层act，可以解决这个问题。
+如果还是会报错，则act的callback方法使用async，await等待一下render执行完成。加上act后，断言要用waitFor的回调函数里面进行。
+
+##### 测试组件时遇到Outlet报错。
+
+![outlet报错](./images/Outlet报错.jpg)
+
+本质上是jest测试环境中没有正确配置react-router-dom的Outlet组件,react-router-dom组装在了umijs里面，这里遇到这个报错，建议直接将Outlet组件mock掉。
+
+```tsx
+jest.mock('@umijs/max', () => {
+  const actUmijs = jest.requireActual('@umijs/max')
+  return {
+    ...actUmijs,
+    Outlet: () => <div data-testid="outlet" /> as unknown as React.FC,
+  }
+})
+```
+
+##### 测试组件时遇到NavLink组件报错
+
+![NavLink报错](./images/NavLink报错.jpg)
+
+与面前的Outlet报错类似，为了解决组件对测试结果的影响，可以选择mock该组件。
+
+```tsx
+jest.mock('@umijs/max', () => {
+  const actUmijs = jest.requireActual('@umijs/max')
+  return {
+    ...actUmijs,
+    NavLink: ({
+      to,
+      className,
+      children,
+    }: {
+      to: string;
+      className?: string;
+      children: React.ReactNode;
+    }) => (
+      <a href={to} className={className}>
+        {children}
+      </a>
+    ),
+  }
+})
+```
+
+
+##### 当待测文件中有import一个图片文件时，出现报错：
+
+待测文件
+
+```tsx
+import { FC, memo } from 'react';
+import styles from './index.scss';
+import emptyDataImg from '@/assets/icon/empty-data.svg';
+
+interface Props {
+  text: string;
+}
+
+const EmptyData: FC<Props> = function ({ text }) {
+  return (
+    <div className={styles.noData}>
+      <img className="empty-image" src={emptyDataImg} alt="emptyImage" />
+      <p className="empty-text">{text}</p>
+    </div>
+  );
+};
+export default memo(EmptyData);
+```
+
+测试代码如下：
+
+```tsx
+import { render } from '@testing-library/react';
+import EmptyData from '../index';
+
+describe('EmptyData Component', () => {
+  it('renders the component with the provided text', () => {
+    const text = 'No data available';
+    const { getByText } = render(<EmptyData text={text} />);
+    const emptyTextElement = getByText(text);
+
+    expect(emptyTextElement).toBeInTheDocument();
+  });
+});
+```
+
+报错信息如下：
+
+```shell
+ ● Test suite failed to run
+
+    Jest encountered an unexpected token
+
+    Jest failed to parse a file. This happens e.g. when your code or its dependencies use non-standard JavaScript syntax, or when Jest is not configured to support such syntax.
+
+    Out of the box Jest supports Babel, which will be used to transform your files into valid JS based on your Babel configuration.
+
+    By default "node_modules" folder is ignored by transformers.
+
+    Here's what you can do:
+     • If you are trying to use ECMAScript Modules, see https://jestjs.io/docs/ecmascript-modules for how to enable it.
+     • If you are trying to use TypeScript, see https://jestjs.io/docs/getting-started#using-typescript
+     • To have some of your "node_modules" files transformed, you can specify a custom "transformIgnorePatterns" in your config.
+     • If you need a custom transformation specify a "transform" option in your config.
+     • If you simply want to mock your non-JS modules (e.g. binary assets) you can stub them out with the "moduleNameMapper" config option.
+
+    You'll find more details and examples of these config options in the docs:
+    https://jestjs.io/docs/configuration
+    For information about custom transformations, see:
+    https://jestjs.io/docs/code-transformation
+
+    Details:
+
+    /Users/xzl/demo/src/assets/icon/empty-data.svg:1
+    ({"Object.<anonymous>":function(module,exports,require,__dirname,__filename,jest){<?xml version="1.0" encoding="UTF-8"?>
+                                                                                      ^
+
+    SyntaxError: Unexpected token '<'
+
+      1 | import { FC, memo } from 'react';
+      2 | import styles from './index.scss';
+    > 3 | import emptyDataImg from '@/assets/icon/empty-data.svg';
+        | ^
+      4 |
+      5 | interface Props {
+      6 |   text: string;
+
+      at Runtime.createScriptFromCode (node_modules/jest-runtime/build/index.js:1495:14)
+      at Object.<anonymous> (src/components/EmptyData/index.tsx:3:1)
+      at Object.<anonymous> (src/components/EmptyData/__test__/index.test.tsx:2:1)
+
+Test Suites: 1 failed, 1 total
+Tests:       0 total
+Snapshots:   0 total
+Time:        107.825 s
+Ran all test suites matching /src\/components\/EmptyData/i.
+```
+<b>解决办法：</b> 这是由于配置问题引起的，是缺少了解析某些文件的插件。需要让jest支持解析文件
+
+具体步骤：
+
+- 引入jest-transform-stub插件
+- 在jest.config.ts中transform属性增加配置
+  ```ts
+  {
+    // ....
+    transform: {
+      '\\.[jt]sx?$': 'ts-jest',
+      ".+\\.(svg|css|styl|less|sass|scss|png|jpg|ttf|woff|woff2)$": "jest-transform-stub"
+    },
+    // ....
+  }
+  ```
+重新启动测试，即可解决这个问题。
+
+##### 当待测文件中，不存在报错信息提示的内容时，建议检查子组件中是否存在
+
+例如：
+
+报错信息如下
+![errors message](./images/setGlobal_is_not_function.png)
+
+测试文件：
+![testFile](./images/setGlobal_is_not_function_test_file.png)
+
+根据报错信息在待测的组件中搜索setGlobal，但是并未搜索到该函数，进入子组件中搜索，深层查找，发现了该bug。子组件中，有setGlobal,但是由于测试文件中对应该返回的useGlobalState,子组件中使用了setGlobal。
+
+![use setGlobal](./images/use_setGlobal_function.png)
 
 
 ### 单元测试与持续集成
@@ -213,15 +849,12 @@ CI/CD：GitHub Actions/Jenkins配置测试流水线
 
 
 ###  总结与资源
-Key Takeaways
 
-单元测试是开发者的安全网，不是负担
-
-从关键路径开始，逐步覆盖
+从关键路径开始，逐步覆盖，着重测试边界和极限值。
 
 测试代码和生产代码同等重要！
 
-学习资源推荐
+<b>学习资源推荐</b>
 
 书籍：《Testing JavaScript Applications》
 
