@@ -113,7 +113,7 @@ Vue项目：Vitest + Vue Test Utils + Testing Library
 <b>测试边界和异常</b>
 
 - 验证正常输入输出；
-- 验证边界：1. 空值（null/undefined/''等）；2. 极端值（数字益处、超长字符串、空字符等等）；3.错误的权限/非法操作（传入非法的数据类型等）；
+- 验证边界：1. 空值（null/undefined/''等）；2. 极端值（数字益出、超长字符串、空字符等等）；3.错误的权限/非法操作（传入非法的数据类型等）；
 - 异常：确保错误消息能够被正确捕获。
 
 <b>避免常见的陷阱</b>
@@ -243,8 +243,6 @@ describe('moveEnd', () => {
 
 eg不允许如下做法:
 ```
-dom.querySelectory('button:last-child') 
-或
 dom.querySelecotry('button:nth-child(1)')
 ```
 
@@ -267,7 +265,7 @@ eg: src/views/routes/Tools/Default/index
 
 ##### 测试iframe标签load事件
 
-示例代码位置： src/views/routes/GinAi/index
+示例代码位置： src/views/routes/GinAiDialog/index
 
 待测试示例代码如下：
 
@@ -358,7 +356,7 @@ describe('GinAi', () => {
 
     expect(iframeElement).toBeInTheDocument();
     expect(loadingElement).toBeInTheDocument();
-
+    // 关键代码
     iframeElement?.dispatchEvent(new Event('load'));
 
     waitFor(() => {
@@ -401,11 +399,11 @@ describe('GinAi', () => {
 
 #### hooks测试
 
-hooks的单元测试，使用renderHook对hook进行渲染，ginlab项目中renderHook方法可以直接从@testing-library/react库里面导入；gindex项目中@testing-library/react版本较低，还未集成renderHook,gindex项目的renderHook可以从@testing-library/react-hooks这个库导入。
+hooks的单元测试，使用renderHook对hooks进行渲染，ginlab项目中renderHook方法可以直接从@testing-library/react库里面导入；gindex项目中@testing-library/react版本较低，还未集成renderHook,gindex项目的renderHook可以从@testing-library/react-hooks这个库导入。
 
 ##### 包含useEffect的hooks单元测试
 
-与测试组件类似，包含useEffect钩子的自定义hook单元测试，需要喜在act的回调函数执行renderHook。如果useEffect中还包括异步的初始化，比如获取接口数据等，需要使用await等待渲染完成。
+与测试组件类似，包含useEffect钩子的自定义hooks单元测试，需要喜在act的回调函数执行renderHook。如果useEffect中还包括异步的初始化，比如获取接口数据等，需要使用await等待渲染完成。
 
 ![包括useEffect的hooks单元测试](./images/包含useEffect的hooks单元测试.png)
 
@@ -629,9 +627,9 @@ export default async (): Promise<Config> => {
 
 ##### 怎么测hooks中单个函数的逻辑？
 
-renderHook渲染函数，可以得到渲染结果result对象，自定义hook返回的对象属性可以在result.current中访问到，未return的，无法在result.current对象中访问到（hook私有函数）。
+renderHook渲染函数，可以得到渲染结果result对象，自定义hooks返回的对象属性可以在result.current中访问到，未return的，无法在result.current对象中访问到（hook私有函数）。
 
-例如：测试自定义hook上的私有函数onChange。
+例如：测试自定义hooks上的私有函数onChange。
 
 ![hook渲染函数中dom节点触发的事件函数](./images/自定义hook渲染函数中的事件.jpg)
 
